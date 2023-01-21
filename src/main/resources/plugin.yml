@@ -1,0 +1,16 @@
+name: Answerit
+version: '${project.version}'
+main: top.mpt.huihui.answerit.Main
+api-version: 1.13
+authors: [ Huihui ]
+description: A plugin which can ask a player question
+website: https://www.minept.top/
+
+commands:
+  answer:
+    description: 让玩家回答问题
+
+permissions:
+  answerit.*:
+    description: Allows answerit command
+    default: not op
