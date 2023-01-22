@@ -10,9 +10,14 @@ public class PlayerChat implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event){
         Player target = q.target;
+        Player sender = q.sender;
+
         if (event.getPlayer() == target){
             // 设置聊天发送的格式
             event.setMessage("我的答案是: " + event.getMessage());
+        } else if (event.getPlayer() == sender){
+            event.setCancelled(true);
+
         }
     }
 }
