@@ -12,14 +12,11 @@ public final class Main extends JavaPlugin {
 
     // getLogger()用
     public static Main instance;
-    public static Inventory team1 = Bukkit.createInventory(null, 54, "team1");
-    public static Inventory team2 = Bukkit.createInventory(null, 54, "team2");
     public String normal = BLUE + "[AnswerIt] ";
     @Override
     public void onEnable() {
         instance = this;
         getCommand("answer").setExecutor(new CommandHandler());
-
         getLogger().info(normal + ChatColor.AQUA + "插件已启用");
     }
 

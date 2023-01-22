@@ -62,5 +62,4 @@ public class ChatUtils {
         Bukkit.getOnlinePlayers().forEach(it -> PlayerUtils.send(it, message, args));
     }
 
-
 }
