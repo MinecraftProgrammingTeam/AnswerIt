@@ -12,7 +12,7 @@ public final class Main extends JavaPlugin {
 
     // getLogger()用
     public static Main instance;
-    public String normal = BLUE + "[AnswerIt] ";
+    public static String normal = BLUE + "[AnswerIt] ";
     @Override
     public void onEnable() {
         instance = this;

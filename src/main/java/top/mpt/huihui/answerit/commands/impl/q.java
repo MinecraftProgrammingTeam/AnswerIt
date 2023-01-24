@@ -41,19 +41,27 @@ public class q extends ICommand {
             // ClickEvent用
             TextComponent message = null;
             // 接收问答的人
-            Player receiver = Bukkit.getPlayer(args[0]);
             // 给event传参用
-            target = receiver;
+            target = Bukkit.getPlayer(args[0]);
             if (Objects.equals(args[2], "select") || Objects.equals(args[2], "Select")){
                 // 给玩家发送消息
                 PlayerUtils.send(sender, "#AQUA#请选择一个正确答案： ");
+                // 定义回答文本
+                StringBuilder answerText = new StringBuilder();
                 // for循环
                 for (int i = 3; i <= args.length; i++){
+                    // 判断回答文本
+                    if (i == args.length){
+                        answerText.append(args[i]);
+                    } else {
+                        answerText.append(args[i]).append(",");
+                    }
                     TextComponent single = new TextComponent(
                             ChatUtils.translateColor("#BLUE#[#AQUA#" + args[i] + "#BLUE]#RESET#")
                     );
-                    ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer setanswer " + target + " " + args[i]);
+                    ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer setanswer " + target + " " + args[i] + " " + answerText);
                     single.setClickEvent(clickEvent);
+                    // 判断TextComponent
                     if (i == 3){
                         message = single;
                     } else {
@@ -62,52 +70,19 @@ public class q extends ICommand {
                 }
                 sender.spigot().sendMessage(message);
             } else if (Objects.equals(args[2], "write") || Objects.equals(args[2], "Write")){
-                PlayerUtils.send(sender, "");
+                PlayerUtils.send(target, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
+                PlayerUtils.send(target, "#AQUA#提问类型： Write");
+                PlayerUtils.send(target, "#GREEN#提问内容：#RESET#%s?", args[1]);
+                PlayerUtils.send(target, "#RED#请在输入框内输入答案，然后将交由提问者和其他玩家共同判断。");
             }
-            // 发送消息
-            sendQuestion(receiver, ((Player) sender).getPlayer(), args[2], args[1]);
+
         } else {
             sender.sendMessage(ChatUtils.translateColor("#RED#请让玩家执行指令！"));
         }
         return true;
     }
 
-    /**
-     * 给玩家发送问题
-     * @param receiver 接受提问金者
-     * @param sender 发出提问者
-     * @param type 提问类型
-     * @param text 提问文本
-     */
-    public void sendQuestion(Player receiver, Player sender, String type, String text){
-        /* 消息格式：
-         * 您收到了来自[X_huihui]的提问
-         * 提问类型：Select
-         * 提问内容：灰灰怎么样？
-         * 回答选项/请在公屏上打出答案：[很好] [非常好] [不好] [完全不好]
-         * 答对了有奖励，答错了有惩罚(?
-         */
-        PlayerUtils.send(receiver, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
-        PlayerUtils.send(receiver, "#AQUA#提问类型： %s", type);
-        PlayerUtils.send(receiver, "#GREEN#提问内容：#RESET#%s?", text);
-        // 如果提问类型是select
-        if (Objects.equals(type, "select") || Objects.equals(type, "Select")){
-            while (true){
-                if (setanswer.target == null || setanswer.target != target){
-                    PlayerUtils.send(receiver, "#RED#对方还没有设置答案，请稍后。");
-                } else {
-                    break;
-                }
-            }
-            String[] answerText = setanswer.answerText.split(",");
-            //TODO: answer判断
-            PlayerUtils.send(receiver, "#RED#请作答： #RESET#%s", answerText);
-        } else if (Objects.equals(type, "write") || Objects.equals(type, "Write")){
-            PlayerUtils.send(receiver, "#RED#请在输入框内输入答案，然后将交由提问者和其他玩家共同判断。");
-        } else { // 提问类型不是write也不是selectR
-            PlayerUtils.send(receiver, "#RED#提问类型有误，请让%s检查一下。", sender.getName());
-        }
-    }
+
 
     public String permission(){
         return "answer.question";
