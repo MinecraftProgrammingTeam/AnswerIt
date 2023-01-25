@@ -1,7 +1,7 @@
 # AnswerIt - 简约的问答插件
 
 ![](https://img.shields.io/badge/Spigot%2FPaper-1.13%2B-orange)
-![](https://img.shields.io/badge/license-Apache-2.0-green)
+![](https://img.shields.io/github/license/MinecraftProgrammingTeam/AnswerIt)
 ![](https://img.shields.io/badge/made%20in-MPT-important)
 
 # 介绍
