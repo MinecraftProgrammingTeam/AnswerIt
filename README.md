@@ -14,6 +14,10 @@
 
 下载最新的 [Release](https://github.com/MinecraftProgrammingTeam/AnswerIt/releases/latest) 放入有BukkitAPI服务端的plugins文件夹之后重启服务器即可
 
+插件测试环境： `Paper1.16.5 + Minecraft 1.16.5 纯净端`
+
+建议服务端版本>=1.16.5
+
 # 开发者悉知
 
 本仓库使用 `Apache License 2.0` 协议开源
