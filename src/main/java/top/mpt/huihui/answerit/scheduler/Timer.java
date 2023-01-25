@@ -1,13 +1,9 @@
-package top.mpt.huihui.answerit.schedule;
+package top.mpt.huihui.answerit.scheduler;
 
-import jdk.jpackage.internal.Log;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import sun.jvm.hotspot.opto.MachIfNode;
-import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
-import top.mpt.huihui.answerit.utils.LogUtils;
 
 import static top.mpt.huihui.answerit.Main.*;
 

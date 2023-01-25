@@ -1,11 +1,10 @@
 package top.mpt.huihui.answerit.prize;
 
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import top.mpt.huihui.answerit.Main;
 
 /**
  * 奖罚系统
+ * @author X_huihui
  */
 public class prize {
     private static Player prizePlayer;

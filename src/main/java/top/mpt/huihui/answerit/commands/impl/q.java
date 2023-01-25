@@ -59,7 +59,6 @@ public class q extends ICommand {
                 }
                 // for循环
                 for (int i = 3; i <= args.length - 1; i++){
-
                     TextComponent single = new TextComponent(
                             ChatUtils.translateColor("#BLUE#[#GREEN#" + args[i] + "#BLUE#]#RESET#  ")
                     );
@@ -72,7 +71,7 @@ public class q extends ICommand {
                         message.addExtra(single);
                     }
                 }
-                // 可以奖励
+                // 可以给予奖励
                 prize.canPrize = true;
                 sender.spigot().sendMessage(message);
             } else if (Objects.equals(args[2], "write") || Objects.equals(args[2], "Write")){

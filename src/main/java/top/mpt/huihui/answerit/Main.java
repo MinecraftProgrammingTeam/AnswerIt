@@ -29,9 +29,12 @@ public final class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        // config
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        // 指令
         getCommand("answer").setExecutor(new CommandHandler());
+        // 注册事件
         getServer().getPluginManager().registerEvents(new PlayerChat(), this);
         getServer().getPluginManager().registerEvents(new InvOpen(), this);
         getLogger().info(normal + ChatColor.AQUA + "插件已启用");

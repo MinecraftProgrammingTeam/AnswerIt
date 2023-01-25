@@ -7,10 +7,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.scheduler.BukkitTask;
 import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.impl.q;
-import top.mpt.huihui.answerit.schedule.Timer;
+import top.mpt.huihui.answerit.scheduler.Timer;
 import top.mpt.huihui.answerit.utils.ChatUtils;
 import top.mpt.huihui.answerit.utils.ConfigUtils;
 

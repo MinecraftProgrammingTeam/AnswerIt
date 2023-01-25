@@ -4,7 +4,7 @@ import top.mpt.huihui.answerit.Main;
 
 /**
  * Config工具类
- * @author WindLeaf & X_huihui
+ * @author WindLeaf_qwq & X_huihui
  */
 public class ConfigUtils {
     /**

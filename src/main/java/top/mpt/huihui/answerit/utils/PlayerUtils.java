@@ -1,13 +1,8 @@
 package top.mpt.huihui.answerit.utils;
 
-import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Player工具类
@@ -34,15 +29,5 @@ public class PlayerUtils {
      */
     public static void send(CommandSender sender, String message, Object... args) {
         send(sender, String.format(message, args));
-    }
-
-    /**
-     * 打开别的玩家的背包
-     * @param prize 成功的Man
-     * @param target 失败的Man
-     */
-    public static void openInv(Player prize, Player target){
-        Inventory backpack = target.getInventory();
-        prize.openInventory(backpack);
     }
 }

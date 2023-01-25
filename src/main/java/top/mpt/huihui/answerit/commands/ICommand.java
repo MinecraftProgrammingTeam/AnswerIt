@@ -11,7 +11,7 @@ public abstract class ICommand {
     /**
      * 子指令名
      */
-    private String cmdName;
+    private final String cmdName;
 
     /**
      * 子指令参数
@@ -23,10 +23,6 @@ public abstract class ICommand {
      * 子指令描述
      */
     private String info;
-
-    public ICommand(String cmdName) {
-        this.cmdName = cmdName;
-    }
 
     public ICommand(String cmdName, String params, String usage) {
         this.cmdName = cmdName;
