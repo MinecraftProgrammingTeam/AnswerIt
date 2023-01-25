@@ -16,7 +16,7 @@
 
 # 开发者悉知
 
-本仓库使用`Apache License 2.0`协议开源
+本仓库使用 `Apache License 2.0` 协议开源
 
 附加条件：
 
@@ -26,20 +26,21 @@
 
 将项目clone到本地
 
-使用`IntelliJ IDEA`打开项目文件夹
+使用 `IntelliJ IDEA` 打开项目文件夹
 
 设置项目结构（有时候会自动设置）
 
-右上角`编辑配置`处新建一个`Maven`
+右下角会弹出加载Maven项目（有时候可能设置了自动加载）
 
-在右边`运行`处输入`clean package`，应用即可
+右上角 `编辑配置` 处新建一个 `Maven`
 
-奖罚系统在：`top.mpt.huihui.answerit.prize.prize`
+在右边 `运行` 处输入 `clean package` ，应用即可
+
+奖罚系统在： `top.mpt.huihui.answerit.prize.prize`
 
 代码注释不算多，但是看懂还是没问题的。
 
 ItemUtils引入了但是没用上，本来想算作奖罚系统的，但是咕咕咕
-
 
 
 ## TODOs
