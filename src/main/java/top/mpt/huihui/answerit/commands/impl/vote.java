@@ -7,7 +7,7 @@ import top.mpt.huihui.answerit.utils.PlayerUtils;
 
 public class vote extends ICommand {
     public vote(){
-        super("vote", "", "投票Write类型问题是对是错");
+        super("vote", "", "no-usage");
     }
 
     public boolean onCommand(CommandSender sender, String[] args) {

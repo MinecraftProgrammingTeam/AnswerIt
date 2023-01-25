@@ -1,6 +1,5 @@
 package top.mpt.huihui.answerit.commands;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import top.mpt.huihui.answerit.utils.ChatUtils;
 
@@ -51,7 +50,7 @@ public abstract class ICommand {
 
 
     public String showUsage() {
-        return ChatUtils.translateColor("/answer &b%s %s &f -- &a%s", cmdName, params, info);
+        return ChatUtils.translateColor("/answer #AQUA#%s %s #RESET# -- #GREEN#%s", cmdName, params, info);
     }
     /**
      * 指令内容

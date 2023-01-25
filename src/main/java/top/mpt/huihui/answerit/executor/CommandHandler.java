@@ -5,6 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.commands.impl.*;
+import top.mpt.huihui.answerit.utils.LogUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 
 import java.util.*;
@@ -147,28 +148,45 @@ public class CommandHandler implements TabExecutor {
                     }
                 }
             }
-        } else {
-            //获取指令参数
-            String typingStr = args[1].toLowerCase();
+        } else if (args.length == 2){
             //得到第一个指令，查看对应参数
             ICommand cmd = commands.get(args[0].toLowerCase());
+            ICommand q = new q();
             //玩家可能会输错，找不到指令，那就不管了
             if (cmd != null) {
-                String [] params = cmd.getParams().split(" ");
-                List<String> listParams = cmd.getListParams();
-                if (params.length > args.length-2) {
-                    if (listParams.isEmpty()) {
-                        String param = params[args.length - 2];
-                        return Collections.singletonList(param);
-                    } else {
-                        return listParams;
-                    }
-                } else {
-                    sender.sendMessage(cmd.showUsage());
+                if (Objects.equals(cmd.getCmdName(), "q")){
+                    return cmd.getListParams();
                 }
-            } else {
-                showHelp(sender);
-                return  null;
+            }
+        } else if (args.length == 3){
+            //得到第一个指令，查看对应参数
+            ICommand cmd = commands.get(args[0].toLowerCase());
+            ICommand q = new q();
+            //玩家可能会输错，找不到指令，那就不管了
+            if (cmd != null) {
+                if (Objects.equals(cmd.getCmdName(), "q")){
+                    return Collections.singletonList("请在这里输入问题(带问号)");
+                }
+            }
+        } else if (args.length == 4){
+            //得到第一个指令，查看对应参数
+            ICommand cmd = commands.get(args[0].toLowerCase());
+            ICommand q = new q();
+            //玩家可能会输错，找不到指令，那就不管了
+            if (cmd != null) {
+                if (Objects.equals(cmd.getCmdName(), "q")){
+                    return Arrays.asList("Select", "Write");
+                }
+            }
+        } else {
+            //得到第一个指令，查看对应参数
+            ICommand cmd = commands.get(args[0].toLowerCase());
+            ICommand q = new q();
+            //玩家可能会输错，找不到指令，那就不管了
+            if (cmd != null) {
+                if (Objects.equals(cmd.getCmdName(), "q")){
+                    return Collections.singletonList("请在这里输入答案(每个空格为1个答案)");
+                }
             }
         }
         return result;

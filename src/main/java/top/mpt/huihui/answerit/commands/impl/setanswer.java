@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class setanswer extends ICommand {
     public setanswer(){
-        super("setanswer", "", "设置问题答案");
+        super("setanswer", "", "no-usage");
     }
 
     public static String answer = "";
@@ -23,15 +23,17 @@ public class setanswer extends ICommand {
     public boolean onCommand(CommandSender sender, String[] args){
         /* args[0] = "NameFlying"
          * args[1] = "Answer"
-         * args[2] = "fakeAnswer,Answer"
+         * args[2] = "select"
+         * args[3] = "灰灰怎么样?"
+         * args[4] = "fakeAnswer,Answer"
          */
         if (sender instanceof Player){
             setanswer.sender = (Player)sender;
             target = Bukkit.getPlayer(args[0]);
             answer = args[1];
-            answerText = args[2];
+            answerText = args[4];
             // 发送消息
-            sendQuestion(((Player) sender).getPlayer(), args[2], args[1]);
+            sendQuestion(((Player) sender).getPlayer(), args[2], args[3]);
         } else {
             sender.sendMessage("请让玩家执行该指令！！！");
         }
@@ -59,15 +61,15 @@ public class setanswer extends ICommand {
          */
         PlayerUtils.send(target, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
         PlayerUtils.send(target, "#AQUA#提问类型： %s", type );
-        PlayerUtils.send(target, "#GREEN#提问内容：#RESET#%s?", text);
+        PlayerUtils.send(target, "#GREEN#提问内容： #RESET#%s", text);
         // 如果提问类型是select
         if (Objects.equals(type, "select") || Objects.equals(type, "Select")){
             String[] answerText = setanswer.answerText.split(",");
             // ClickEvent用
             TextComponent message = null;
-            for (int i = 0; i <= answerText.length; i++){
+            for (int i = 0; i <= answerText.length - 1; i++){
                 TextComponent single = new TextComponent(
-                        ChatUtils.translateColor("#BLUE#[#AQUA#" + answerText[i] + "#BLUE]#RESET#")
+                        ChatUtils.translateColor("#BLUE#[#GREEN#" + answerText[i] + "#BLUE#]#RESET#  ")
                 );
                 ClickEvent clickEvent = null;
                 if (answerText[i].equals(answer)){
@@ -82,8 +84,8 @@ public class setanswer extends ICommand {
                     message.addExtra(single);
                 }
             }
-            PlayerUtils.send(target, "#RED#请作答： #RESET#%s", message);
-        } else { // 提问类型不是write也不是selectR
+            target.spigot().sendMessage(message);
+        } else { // 提问类型不是write也不是select
             PlayerUtils.send(target, "#RED#提问类型有误，请让%s检查一下。", sender.getName());
         }
     }

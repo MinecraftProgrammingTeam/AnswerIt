@@ -8,13 +8,13 @@ import top.mpt.huihui.answerit.Main;
  */
 public class LogUtils {
     // 定义instance
-    Main instance = Main.instance;
+    static Main instance = Main.instance;
 
     /**
      * LogInfo
      * @param log 要输出的info
      */
-    public void info(Object log){
+    public static void info(Object log){
         instance.getLogger().info(ChatUtils.translateColor(log.toString()));
     }
 
@@ -23,7 +23,7 @@ public class LogUtils {
      * @param log 要输出的info
      * @param args 占位符
      */
-    public void info(Object log, Object... args){
+    public static void info(Object log, Object... args){
         instance.getLogger().info(ChatUtils.translateColor(log.toString(), args));
     }
 
@@ -31,7 +31,7 @@ public class LogUtils {
      * LogWarning
      * @param log 要输出的warning
      */
-    public void warning(Object log){
+    public static void warning(Object log){
         instance.getLogger().warning(ChatUtils.translateColor(log.toString()));
     }
 
@@ -40,7 +40,7 @@ public class LogUtils {
      * @param log 要输出的warning
      * @param args 占位符
      */
-    public void warning(Object log, Object... args){
+    public static void warning(Object log, Object... args){
         instance.getLogger().warning(ChatUtils.translateColor(log.toString(), args));
     }
 }

@@ -1,27 +1,27 @@
 package top.mpt.huihui.answerit.commands.impl;
 
-import com.sun.org.apache.xpath.internal.patterns.ContextMatchStepPattern;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.w3c.dom.Text;
-import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.utils.ChatUtils;
+import top.mpt.huihui.answerit.utils.LogUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class q extends ICommand {
 
     public q() {
-        super("q", "", "提问问题");
+        super("q", "", "/answer q [PlayerName] [Question] [select/wrtite] [answer] [answer] *n");
+        List<String> params = new ArrayList<>();
+        Bukkit.getOnlinePlayers().forEach( it -> {
+                params.add(it.getName());
+            }
+        );
+        setListParams(params);
     }
 
     public static Player target = null;
@@ -48,18 +48,22 @@ public class q extends ICommand {
                 PlayerUtils.send(sender, "#AQUA#请选择一个正确答案： ");
                 // 定义回答文本
                 StringBuilder answerText = new StringBuilder();
-                // for循环
-                for (int i = 3; i <= args.length; i++){
-                    // 判断回答文本
-                    if (i == args.length){
-                        answerText.append(args[i]);
+                // 判断回答文本
+                for (int a = 3; a <= args.length - 1; a++){
+
+                    if (a == args.length - 1){
+                        answerText.append(args[a]);
                     } else {
-                        answerText.append(args[i]).append(",");
+                        answerText.append(args[a]).append(",");
                     }
+                }
+                // for循环
+                for (int i = 3; i <= args.length - 1; i++){
+
                     TextComponent single = new TextComponent(
-                            ChatUtils.translateColor("#BLUE#[#AQUA#" + args[i] + "#BLUE]#RESET#")
+                            ChatUtils.translateColor("#BLUE#[#GREEN#" + args[i] + "#BLUE#]#RESET#  ")
                     );
-                    ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer setanswer " + target + " " + args[i] + " " + answerText);
+                    ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer setanswer " + target.getName() + " " + args[i] + " select " + args[1] + " " + answerText);
                     single.setClickEvent(clickEvent);
                     // 判断TextComponent
                     if (i == 3){
