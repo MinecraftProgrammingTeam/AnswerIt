@@ -46,6 +46,10 @@
 
 ItemUtils引入了但是没用上，本来想算作奖罚系统的，但是咕咕咕
 
+## 简单的逻辑图（不太会画）
+
+![luoji](https://user-images.githubusercontent.com/64721484/214585912-42e1b229-573d-4269-adc0-1c85048b9b98.png)
+
 
 ## TODOs
 
