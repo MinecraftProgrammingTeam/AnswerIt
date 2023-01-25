@@ -71,7 +71,7 @@ public class setanswer extends ICommand {
                 TextComponent single = new TextComponent(
                         ChatUtils.translateColor("#BLUE#[#GREEN#" + answerText[i] + "#BLUE#]#RESET#  ")
                 );
-                ClickEvent clickEvent = null;
+                ClickEvent clickEvent;
                 if (answerText[i].equals(answer)){
                     clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer send 答对啦！ " + sender.getName());
                 } else {

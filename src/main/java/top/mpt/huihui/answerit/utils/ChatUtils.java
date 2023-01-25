@@ -12,8 +12,6 @@ import java.util.regex.Pattern;
  * @author WindLeaf_qwq
  */
 public class ChatUtils {
-    // 颜色List
-    private static final ArrayList<ChatColor> colors = new ArrayList<>();
     // 存放颜色代码对应的中文
     /**
      * 将带特殊颜色代码的文本转为带颜色代码的文本

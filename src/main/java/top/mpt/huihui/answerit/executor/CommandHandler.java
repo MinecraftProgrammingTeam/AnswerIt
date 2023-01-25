@@ -5,7 +5,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.commands.impl.*;
-import top.mpt.huihui.answerit.utils.LogUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 
 import java.util.*;
@@ -14,27 +13,17 @@ import java.util.*;
  * 子指令处理器
  */
 public class CommandHandler implements TabExecutor {
-    private static CommandHandler instance;
 
     /**
      * 维护的指令集合
      */
     private final Map<String, ICommand> commands = new HashMap<>();
 
-    public Map<String, ICommand> getCommands() {
-        return commands;
-    }
-
     /**
      * handler初始化构造器
      */
     public CommandHandler() {
-        instance = this;
         initHandler();
-    }
-
-    public static CommandHandler getInstance() {
-        return instance;
     }
 
     /**
@@ -42,28 +31,16 @@ public class CommandHandler implements TabExecutor {
      * 注意要使用小写，与发送者的指令进行匹配
      */
     private void initHandler() {
-//        Reflections reflections = new Reflections("top.mpt.xzystudio.flywars.commands.impl");
-//        Set<Class<? extends ICommand>> subTypesOf = reflections.getSubTypesOf(ICommand.class);
-////        Main.instance.getLogger().warning(subTypesOf.toArray().toString());
-//        subTypesOf.forEach(aClass -> {
-//            try {
-//                ICommand command = aClass.newInstance();
-//                registerCommand(command);
-//            } catch (InstantiationException | IllegalAccessException e) {
-//                throw new RuntimeException(e);
-//            }
-//        });
-
         registerCommand(new q());
         registerCommand(new send());
         registerCommand(new vote());
+        registerCommand(new reload());
         registerCommand(new setanswer());
 
     }
 
     /**
      * 手动注册指令
-     * @param command
      */
     public void registerCommand(ICommand command) {
         //command.setHandler(this);
@@ -72,7 +49,6 @@ public class CommandHandler implements TabExecutor {
 
     /**
      * 使用帮助指令
-     * @param sender
      */
     public void showHelp(CommandSender sender) {
         PlayerUtils.send(sender, "#BLUE#AnswerIt 你问我答  #GREEN#插件帮助");
@@ -83,11 +59,6 @@ public class CommandHandler implements TabExecutor {
 
     /**
      * 统一返回true，使用自定义的showHelp()方法。
-     * @param sender
-     * @param command
-     * @param label
-     * @param args
-     * @return
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -106,7 +77,7 @@ public class CommandHandler implements TabExecutor {
                     //用链表的removeFirst，删掉第指令，得到参数
                     LinkedList<String> list = new LinkedList<>(Arrays.asList(args));
                     list.removeFirst();
-                    params = list.toArray(new String[list.size()]);
+                    params = list.toArray(new String[0]);
                 }
                 boolean res = cmd.onCommand(sender, params);
                 if (!res) {
@@ -151,7 +122,6 @@ public class CommandHandler implements TabExecutor {
         } else if (args.length == 2){
             //得到第一个指令，查看对应参数
             ICommand cmd = commands.get(args[0].toLowerCase());
-            ICommand q = new q();
             //玩家可能会输错，找不到指令，那就不管了
             if (cmd != null) {
                 if (Objects.equals(cmd.getCmdName(), "q")){
@@ -161,7 +131,6 @@ public class CommandHandler implements TabExecutor {
         } else if (args.length == 3){
             //得到第一个指令，查看对应参数
             ICommand cmd = commands.get(args[0].toLowerCase());
-            ICommand q = new q();
             //玩家可能会输错，找不到指令，那就不管了
             if (cmd != null) {
                 if (Objects.equals(cmd.getCmdName(), "q")){
@@ -171,7 +140,6 @@ public class CommandHandler implements TabExecutor {
         } else if (args.length == 4){
             //得到第一个指令，查看对应参数
             ICommand cmd = commands.get(args[0].toLowerCase());
-            ICommand q = new q();
             //玩家可能会输错，找不到指令，那就不管了
             if (cmd != null) {
                 if (Objects.equals(cmd.getCmdName(), "q")){
@@ -181,11 +149,12 @@ public class CommandHandler implements TabExecutor {
         } else {
             //得到第一个指令，查看对应参数
             ICommand cmd = commands.get(args[0].toLowerCase());
-            ICommand q = new q();
             //玩家可能会输错，找不到指令，那就不管了
             if (cmd != null) {
                 if (Objects.equals(cmd.getCmdName(), "q")){
-                    return Collections.singletonList("请在这里输入答案(每个空格为1个答案)");
+                    if (args[3].equals("Select") || args[3].equals("select")){
+                        return Collections.singletonList("请在这里输入答案(每个空格为1个答案)");
+                    }
                 }
             }
         }

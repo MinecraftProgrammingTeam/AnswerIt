@@ -1,0 +1,2 @@
+# Write模式下，投票的等待时间(秒)
+Write-wait-time: 30

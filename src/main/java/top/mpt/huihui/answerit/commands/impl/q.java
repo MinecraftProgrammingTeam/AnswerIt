@@ -5,12 +5,14 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.utils.ChatUtils;
-import top.mpt.huihui.answerit.utils.LogUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class q extends ICommand {
 
@@ -76,8 +78,13 @@ public class q extends ICommand {
             } else if (Objects.equals(args[2], "write") || Objects.equals(args[2], "Write")){
                 PlayerUtils.send(target, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
                 PlayerUtils.send(target, "#AQUA#提问类型： Write");
-                PlayerUtils.send(target, "#GREEN#提问内容：#RESET#%s?", args[1]);
+                PlayerUtils.send(target, "#GREEN#提问内容： #RESET#%s", args[1]);
                 PlayerUtils.send(target, "#RED#请在输入框内输入答案，然后将交由提问者和其他玩家共同判断。");
+                ChatUtils.broadcast("%s#GREEN#玩家： #AQUA#%s #GREEN#收到了来自： #GOLD#%s#GREEN# 的提问。",
+                        Main.normal, target.getName(), sender.getName());
+                ChatUtils.broadcast("%s#AQUA#提问内容： #RESET#%s", Main.normal, args[1]);
+                ChatUtils.broadcast("%s#GREEN#正在等待玩家#AQUA#%s#GREEN#作答", Main.normal, target.getName());
+                Main.isCheckChat = true;
             }
 
         } else {

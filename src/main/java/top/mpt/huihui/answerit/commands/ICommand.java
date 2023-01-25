@@ -3,7 +3,6 @@ package top.mpt.huihui.answerit.commands;
 import org.bukkit.command.CommandSender;
 import top.mpt.huihui.answerit.utils.ChatUtils;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +36,6 @@ public abstract class ICommand {
 
     public String getCmdName() {
         return cmdName;
-    }
-    public String getParams() {
-        return params;
     }
     public List<String> getListParams() {
         return this.listParams;

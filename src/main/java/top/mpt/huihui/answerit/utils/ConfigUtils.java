@@ -2,9 +2,6 @@ package top.mpt.huihui.answerit.utils;
 
 import top.mpt.huihui.answerit.Main;
 
-import java.util.List;
-import java.util.Map;
-
 /**
  * Config工具类
  * @author WindLeaf & X_huihui
@@ -31,34 +28,4 @@ public class ConfigUtils {
         return result == null ? defaultValue : result;
     }
 
-    /**
-     * 获取Config数组
-     * @param path m名称
-     * @return ListConfigValue
-     */
-    public static List<?> getListConfig(String path){
-        Main instance = Main.instance;
-        return instance.getConfig().getList(path);
-    }
-
-    /**
-     * 获取Config数组
-     * @param path 名称
-     * @param defaultList 默认值
-      *@return ListConfigValue
-     */
-    public static List<?> getListConfig(String path, List<?> defaultList){
-        List<?> result = getListConfig(path);
-        return result == null ? defaultList : result;
-    }
-
-    /**
-     * 获取MapConfig数组
-     * @param path 名称
-     * @return MapConfigList
-     */
-    public static List<Map<?, ?>> getMapListConfig(String path){
-        Main instance = Main.instance;
-        return instance.getConfig().getMapList(path);
-    }
 }
