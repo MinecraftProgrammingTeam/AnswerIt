@@ -1,5 +1,9 @@
 # AnswerIt - 简约的问答插件
 
+![](https://img.shields.io/badge/Spigot%2FPaper-1.13%2B-orange)
+![](https://img.shields.io/badge/license-Apache-2.0-green)
+![](https://img.shields.io/badge/made%20in-MPT-important)
+
 # 介绍
 
 灵感源自 [《你 问 我 打 ！》](https://www.bilibili.com/video/BV13V4y1W7X6/)
@@ -48,7 +52,7 @@ ItemUtils引入了但是没用上，本来想算作奖罚系统的，但是咕�
 
 ## 简单的逻辑图（不太会画）
 
-![luoji](https://user-images.githubusercontent.com/64721484/214585912-42e1b229-573d-4269-adc0-1c85048b9b98.png)
+![](https://user-images.githubusercontent.com/64721484/214585912-42e1b229-573d-4269-adc0-1c85048b9b98.png)
 
 
 ## TODOs
