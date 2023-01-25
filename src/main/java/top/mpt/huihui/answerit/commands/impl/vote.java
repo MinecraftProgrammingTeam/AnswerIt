@@ -1,6 +1,5 @@
 package top.mpt.huihui.answerit.commands.impl;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.commands.ICommand;
@@ -55,6 +54,6 @@ public class vote extends ICommand {
     }
 
     public String permission(){
-        return "answer.vote";
+        return "answer.question";
     }
 }

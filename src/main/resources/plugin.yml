@@ -11,9 +11,9 @@ commands:
     description: 让玩家回答问题
 
 permissions:
-  answer.*:
+  answer.question:
     description: Allows answer command
     default: true
-  answerop.*:
+  answerop.reload:
     description: op command
     default: op

@@ -14,7 +14,7 @@
 - [x] 奖罚系统
 
 ## 目前已知问题：
-- permission即使default是true，也不会给没OP的玩家权限
+欢迎在Issues提出哦qwq
 
 ## 咕咕咕
 

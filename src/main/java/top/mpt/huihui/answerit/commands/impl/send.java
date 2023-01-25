@@ -48,6 +48,6 @@ public class send extends ICommand {
 
 
     public String permission(){
-        return "answer.send";
+        return "answer.question";
     }
 }
