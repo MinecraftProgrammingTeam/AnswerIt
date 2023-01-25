@@ -48,7 +48,7 @@ public class PlayerChat implements Listener {
                 int delaySecond = (int) ConfigUtils.getConfig("Write-wait-time", 30);
                 ChatUtils.broadcast("%s#RED#计时#AQUA#%d#RED#秒，开始。", normal, delaySecond);
                 ChatUtils.broadcast("%s#RED#请在规定时间内完成投票。", normal);
-                new Timer().runTaskTimer(Main.getPlugin(Main.class), delaySecond * 20L, 0);
+                new Timer().runTaskLater(Main.getPlugin(Main.class), delaySecond * 20L);
                 // 撤销事件
                 isCheckChat = false;
             }

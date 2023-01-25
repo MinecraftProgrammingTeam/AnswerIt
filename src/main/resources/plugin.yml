@@ -11,9 +11,9 @@ commands:
     description: 让玩家回答问题
 
 permissions:
-  answerit.*:
-    description: Allows answerit command
-    default: not op
+  answer.*:
+    description: Allows answer command
+    default: true
   answerop.*:
     description: op command
     default: op

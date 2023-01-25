@@ -11,6 +11,7 @@ public class reload extends ICommand {
 
     public boolean onCommand(CommandSender sender, String[] args) {
         Main.getPlugin(Main.class).reloadConfig();
+        sender.sendMessage("[AnswerIt] Plugin Reload Completed");
         return true;
     }
 

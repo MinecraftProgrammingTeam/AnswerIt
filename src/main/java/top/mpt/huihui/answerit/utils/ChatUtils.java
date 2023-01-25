@@ -3,7 +3,6 @@ package top.mpt.huihui.answerit.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

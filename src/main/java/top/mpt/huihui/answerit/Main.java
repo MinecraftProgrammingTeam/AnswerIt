@@ -3,6 +3,7 @@ package top.mpt.huihui.answerit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.mpt.huihui.answerit.executor.CommandHandler;
+import top.mpt.huihui.answerit.listener.InvOpen;
 import top.mpt.huihui.answerit.listener.PlayerChat;
 
 import java.util.ArrayList;
@@ -12,8 +13,9 @@ import static org.bukkit.ChatColor.BLUE;
 
 public final class Main extends JavaPlugin {
 
-    // getLogger()用
+    // log用
     public static Main instance;
+    /* Write */
     // 是否检查玩家聊天
     public static boolean isCheckChat = false;
     // 存票
@@ -22,6 +24,7 @@ public final class Main extends JavaPlugin {
     public static List<String> voteList = new ArrayList<>();
     // 避免玩家投票结束后进行投票
     public static boolean canVote = false;
+    // 设置奖励玩家
     public static String normal = BLUE + "[AnswerIt] ";
     @Override
     public void onEnable() {
@@ -30,6 +33,7 @@ public final class Main extends JavaPlugin {
         saveDefaultConfig();
         getCommand("answer").setExecutor(new CommandHandler());
         getServer().getPluginManager().registerEvents(new PlayerChat(), this);
+        getServer().getPluginManager().registerEvents(new InvOpen(), this);
         getLogger().info(normal + ChatColor.AQUA + "插件已启用");
     }
 

@@ -3,6 +3,7 @@ package top.mpt.huihui.answerit.utils;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,45 +37,12 @@ public class PlayerUtils {
     }
 
     /**
-     * 给玩家显示标题
-     * @param player 玩家
-     * @param title 要显示的标题
-     * @param subtitle 要显示的副标题
+     * 打开别的玩家的背包
+     * @param prize 成功的Man
+     * @param target 失败的Man
      */
-    public static void showTitle(Player player, String title, String subtitle) {
-        player.sendTitle(ChatUtils.translateColor(title), ChatUtils.translateColor(subtitle));
-    }
-
-    /**
-     * 给玩家显示标题
-     * @param player 玩家
-     * @param title 标题
-     * @param subtitle 副标题
-     * @param titleArgs 标题占位符
-     * @param subtitleArgs 副标题占位符
-     */
-    public static void showTitle(Player player, String title, String subtitle, List<Object> titleArgs, List<Object> subtitleArgs) {
-        showTitle(player,
-                titleArgs != null ? String.format(title, titleArgs) : title,
-                subtitleArgs != null ? String.format(subtitle, subtitleArgs) : subtitle);
-    }
-
-    /**
-     * 获取玩家血量字符串
-     * @param player 玩家
-     * @return 血量条字符串
-     */
-    public static String getPlayerHealthString(Player player) {
-        // 计算血量
-        if ((int) player.getHealth() == 0){
-            return ChatUtils.translateColor("#RED#阵亡了");
-        }
-
-        StringBuilder sb = new StringBuilder();
-        int heal = (int) player.getHealth();
-        int max_heal = (int) Objects.requireNonNull(player.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getValue();
-        int count = heal / (max_heal / 10);
-        for (int i = 0; i < count; i++) sb.append(ChatUtils.translateColor("#RED#❤"));
-        return sb.toString();
+    public static void openInv(Player prize, Player target){
+        Inventory backpack = target.getInventory();
+        prize.openInventory(backpack);
     }
 }

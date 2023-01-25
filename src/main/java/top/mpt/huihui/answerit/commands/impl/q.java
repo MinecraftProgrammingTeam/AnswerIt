@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.ICommand;
+import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 
@@ -19,10 +20,7 @@ public class q extends ICommand {
     public q() {
         super("q", "", "/answer q [PlayerName] [Question] [select/wrtite] [answer] [answer] *n");
         List<String> params = new ArrayList<>();
-        Bukkit.getOnlinePlayers().forEach( it -> {
-                params.add(it.getName());
-            }
-        );
+        Bukkit.getOnlinePlayers().forEach( it -> params.add(it.getName()) );
         setListParams(params);
     }
 
@@ -74,6 +72,8 @@ public class q extends ICommand {
                         message.addExtra(single);
                     }
                 }
+                // 可以奖励
+                prize.canPrize = true;
                 sender.spigot().sendMessage(message);
             } else if (Objects.equals(args[2], "write") || Objects.equals(args[2], "Write")){
                 PlayerUtils.send(target, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
@@ -85,6 +85,9 @@ public class q extends ICommand {
                 ChatUtils.broadcast("%s#AQUA#提问内容： #RESET#%s", Main.normal, args[1]);
                 ChatUtils.broadcast("%s#GREEN#正在等待玩家#AQUA#%s#GREEN#作答", Main.normal, target.getName());
                 Main.isCheckChat = true;
+                // 假设玩家会答对，timer那里可以直接execute
+                prize.setPrizePlayer(target);
+                prize.setTargetPlayer((Player) sender);
             }
 
         } else {
