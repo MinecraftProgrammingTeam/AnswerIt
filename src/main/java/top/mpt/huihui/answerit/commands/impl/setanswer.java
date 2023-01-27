@@ -1,13 +1,11 @@
 package top.mpt.huihui.answerit.commands.impl;
 
-import com.sun.tools.classfile.ConstantPool;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.commands.ICommand;
 import org.bukkit.command.CommandSender;
-import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 

@@ -19,6 +19,7 @@ public class q extends ICommand {
 
     public q() {
         super("q", "", "/answer q [PlayerName] [Question] [select/wrtite] [answer] [answer] *n");
+        // 传入服务器全体玩家List
         List<String> params = new ArrayList<>();
         Bukkit.getOnlinePlayers().forEach( it -> params.add(it.getName()) );
         setListParams(params);
@@ -64,7 +65,7 @@ public class q extends ICommand {
                     );
                     ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer setanswer " + target.getName() + " " + args[i] + " select " + args[1] + " " + answerText);
                     single.setClickEvent(clickEvent);
-                    // 判断TextComponent
+                    // 判断TextComponent应该怎么叠
                     if (i == 3){
                         message = single;
                     } else {

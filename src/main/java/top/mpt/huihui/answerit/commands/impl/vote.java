@@ -16,6 +16,9 @@ public class vote extends ICommand {
     }
 
     public boolean onCommand(CommandSender sender, String[] args) {
+        /*
+         * arg[0] == true/false
+         */
         if (sender instanceof Player){
             // 防止重复投票
             for (String player : voteList){
@@ -36,15 +39,12 @@ public class vote extends ICommand {
             if (args[0].equals("true")){
                 ChatUtils.broadcast("%s#GREEN#玩家： #AQUA#%s #GREEN#投给了： 答案正确", normal, sender.getName());
                 voteResult.add(true);
-                voteList.add(sender.getName());
             } else if (args[0].equals("false")){
                 ChatUtils.broadcast("%s#RED#玩家： #AQUA#%s #RED#投给了： 答案错误", normal, sender.getName());
                 voteResult.add(false);
-                voteList.add(sender.getName());
             }
-
-
-
+            // 投票列表添加玩家
+            voteList.add(sender.getName());
         } else {
             sender.sendMessage("请让玩家执行该指令");
         }

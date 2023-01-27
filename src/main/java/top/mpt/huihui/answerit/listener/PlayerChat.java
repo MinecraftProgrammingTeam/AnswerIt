@@ -18,9 +18,12 @@ import static top.mpt.huihui.answerit.Main.*;
 public class PlayerChat implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event){
+        // 判断是否处于Write问答状态
         if (isCheckChat){
+            // 获取target
             Player target = q.target;
-            if (event.getPlayer() == target){
+            // 如果获取到的玩家为target
+            if (event.getPlayer().equals(target)){
                 // 设置聊天发送的格式
                 event.setCancelled(true);
                 ChatUtils.broadcast("%s#GREEN#%s的回答是： #AQUA#%s", normal, target.getName(), event.getMessage());
