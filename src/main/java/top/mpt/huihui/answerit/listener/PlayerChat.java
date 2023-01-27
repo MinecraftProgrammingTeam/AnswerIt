@@ -16,6 +16,7 @@ import top.mpt.huihui.answerit.utils.ConfigUtils;
 import static top.mpt.huihui.answerit.Main.*;
 
 public class PlayerChat implements Listener {
+    /* form commands.impl.q */
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event){
         // 判断是否处于Write问答状态
@@ -26,7 +27,7 @@ public class PlayerChat implements Listener {
             if (event.getPlayer().equals(target)){
                 // 设置聊天发送的格式
                 event.setCancelled(true);
-                ChatUtils.broadcast("%s#GREEN#%s的回答是： #AQUA#%s", normal, target.getName(), event.getMessage());
+                ChatUtils.broadcast("#GREEN#%s的回答是： #AQUA#%s", target.getName(), event.getMessage());
                 // 设置ClickEvent
                 ClickEvent clickEventT = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer vote true");
                 ClickEvent clickEventF = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer vote false");
@@ -35,7 +36,7 @@ public class PlayerChat implements Listener {
                         ChatUtils.translateColor("#GREEN#[正确]  ")
                 );
                 TextComponent componentF = new TextComponent(
-                        ChatUtils.translateColor("#RED#[错误]", normal)
+                        ChatUtils.translateColor("#RED#[错误]")
                 );
                 // setClickEvent
                 componentT.setClickEvent(clickEventT);
@@ -48,11 +49,14 @@ public class PlayerChat implements Listener {
                 Bukkit.spigot().broadcast(componentT);
                 // 开始计时
                 int delaySecond = (int) ConfigUtils.getConfig("Write-wait-time", 30);
-                ChatUtils.broadcast("%s#RED#计时#AQUA#%d#RED#秒，开始。", normal, delaySecond);
-                ChatUtils.broadcast("%s#RED#请在规定时间内完成投票。", normal);
+                ChatUtils.broadcast("#RED#计时#AQUA#%d#RED#秒，开始。", delaySecond);
+                ChatUtils.broadcast("#RED#请在规定时间内完成投票。");
                 new Timer().runTaskLater(Main.getPlugin(Main.class), delaySecond * 20L);
                 // 撤销事件
                 isCheckChat = false;
+                /* opened scheduler.Timer  */
+                /* wait Global Player vote    */
+                /* then to commands.impl.vote */
             }
         }
     }

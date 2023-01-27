@@ -5,7 +5,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.commands.impl.*;
-import top.mpt.huihui.answerit.utils.LogUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 
 import java.util.*;
@@ -36,7 +35,7 @@ public class CommandHandler implements TabExecutor {
         registerCommand(new send());
         registerCommand(new vote());
         registerCommand(new reload());
-        registerCommand(new setanswer());
+        registerCommand(new setAnswer());
 
     }
 

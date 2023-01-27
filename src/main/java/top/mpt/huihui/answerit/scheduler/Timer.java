@@ -9,6 +9,8 @@ import static top.mpt.huihui.answerit.Main.*;
 
 public class Timer extends BukkitRunnable {
 
+    /* be opened on listener.PlayerChat    */
+    /* be influenced on commands.impl.vote */
     @Override
     public void run() {
         int trueCount = 0;
@@ -23,14 +25,14 @@ public class Timer extends BukkitRunnable {
         // 清空数组
         voteResult.clear();
         voteList.clear();
-        ChatUtils.broadcast("%s#GREEN#投票结束，有%d人投了答案正确，%d人投了答案错误。", normal, trueCount, falseCount);
+        ChatUtils.broadcast("#GREEN#投票结束，有%d人投了答案正确，%d人投了答案错误。", trueCount, falseCount);
         if (trueCount == falseCount){
-            ChatUtils.broadcast("%s#GOLD#票数相等，没有奖励也没有惩罚(悲", normal);
+            ChatUtils.broadcast("#GOLD#票数相等，没有奖励也没有惩罚(悲");
         } else if (trueCount > falseCount){
-            ChatUtils.broadcast("%s#GREEN#答案正确！", normal);
+            ChatUtils.broadcast("#GREEN#答案正确！");
             prize.executePrize();
         } else {
-            ChatUtils.broadcast("%s#RED#答案错误！", normal);
+            ChatUtils.broadcast("#RED#答案错误！");
             // 调换顺序
             Player prizePlayer = prize.getPrizePlayer();
             prize.setPrizePlayer(prize.getTargetPlayer());
@@ -42,5 +44,6 @@ public class Timer extends BukkitRunnable {
         canVote = false;
         // 关闭Runnable
         this.cancel();
+        /* to prize.prize */
     }
 }

@@ -28,6 +28,7 @@ public class q extends ICommand {
     public static Player target = null;
     public static Player sender = null;
 
+    /* from PlayerExecuteCommand */
     public boolean onCommand(CommandSender sender, String[] args) {
         /*
          * args[0] = NameFlying
@@ -75,19 +76,26 @@ public class q extends ICommand {
                 // 可以给予奖励
                 prize.canPrize = true;
                 sender.spigot().sendMessage(message);
+                /* start select process */
+                /* wait Sender Select Right Answer */
+                /* then to commands.impl.setAnswer */
+
             } else if (Objects.equals(args[2], "write") || Objects.equals(args[2], "Write")){
                 PlayerUtils.send(target, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
                 PlayerUtils.send(target, "#AQUA#提问类型： Write");
                 PlayerUtils.send(target, "#GREEN#提问内容： #RESET#%s", args[1]);
                 PlayerUtils.send(target, "#RED#请在输入框内输入答案，然后将交由提问者和其他玩家共同判断。");
-                ChatUtils.broadcast("%s#GREEN#玩家： #AQUA#%s #GREEN#收到了来自： #GOLD#%s#GREEN# 的提问。",
-                        Main.normal, target.getName(), sender.getName());
-                ChatUtils.broadcast("%s#AQUA#提问内容： #RESET#%s", Main.normal, args[1]);
-                ChatUtils.broadcast("%s#GREEN#正在等待玩家#AQUA#%s#GREEN#作答", Main.normal, target.getName());
+                ChatUtils.broadcast("#GREEN#玩家： #AQUA#%s #GREEN#收到了来自： #GOLD#%s#GREEN# 的提问。",
+                        target.getName(), sender.getName());
+                ChatUtils.broadcast("#AQUA#提问内容： #RESET#%s", args[1]);
+                ChatUtils.broadcast("#GREEN#正在等待玩家#AQUA#%s#GREEN#作答", target.getName());
                 Main.isCheckChat = true;
                 // 假设玩家会答对，timer那里可以直接execute
                 prize.setPrizePlayer(target);
                 prize.setTargetPlayer((Player) sender);
+                /* start write process */
+                /* wait Player Answer Question */
+                /* then to listener.PlayerChat */
             }
 
         } else {

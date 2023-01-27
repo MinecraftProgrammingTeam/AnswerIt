@@ -9,6 +9,7 @@ import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.LogUtils;
 
 public class InvOpen implements Listener {
+    /* from prize.prize */
     @EventHandler
     public void onInvClicked(InventoryClickEvent event){
         if(event.getInventory().equals(prize.getTargetPlayer().getInventory())){
@@ -22,6 +23,7 @@ public class InvOpen implements Listener {
             prizePlayer.closeInventory();
             // 结束奖励
             prize.clearAllPlayer();
+            /* to the end of this(select / write) process */
         }
     }
 }

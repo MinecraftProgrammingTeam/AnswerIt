@@ -11,8 +11,8 @@ import top.mpt.huihui.answerit.utils.PlayerUtils;
 
 import java.util.Objects;
 
-public class setanswer extends ICommand {
-    public setanswer(){
+public class setAnswer extends ICommand {
+    public setAnswer(){
         super("setanswer", "", "no-usage");
     }
 
@@ -28,7 +28,7 @@ public class setanswer extends ICommand {
          * args[4] = "fakeAnswer,Answer"
          */
         if (sender instanceof Player){
-            setanswer.sender = (Player)sender;
+            setAnswer.sender = (Player)sender;
             target = Bukkit.getPlayer(args[0]);
             answer = args[1];
             answerText = args[4];
@@ -45,6 +45,7 @@ public class setanswer extends ICommand {
     }
 
 
+    /* from commands.impl.q(with Player Execute Command) */
     /**
      * 给玩家发送问题
      * @param sender 发出提问者
@@ -64,7 +65,7 @@ public class setanswer extends ICommand {
         PlayerUtils.send(target, "#GREEN#提问内容： #RESET#%s", text);
         // 如果提问类型是select
         if (Objects.equals(type, "select") || Objects.equals(type, "Select")){
-            String[] answerText = setanswer.answerText.split(",");
+            String[] answerText = setAnswer.answerText.split(",");
             // ClickEvent用
             TextComponent message = null;
             for (int i = 0; i <= answerText.length - 1; i++){
@@ -85,7 +86,8 @@ public class setanswer extends ICommand {
                 }
             }
             target.spigot().sendMessage(message);
-
+            /* wait Target Answer */
+            /* to commands.impl.send */
         } else { // 提问类型不是write也不是select
             PlayerUtils.send(target, "#RED#提问类型有误，请让%s检查一下。", sender.getName());
         }

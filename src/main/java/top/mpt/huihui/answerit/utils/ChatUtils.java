@@ -2,6 +2,7 @@ package top.mpt.huihui.answerit.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import top.mpt.huihui.answerit.Main;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -52,7 +53,7 @@ public class ChatUtils {
      * @param args 占位符替换
      */
     public static void broadcast(String message, Object... args) {
-        Bukkit.getOnlinePlayers().forEach(it -> PlayerUtils.send(it, message, args));
+        Bukkit.getOnlinePlayers().forEach(it -> PlayerUtils.send(it, Main.normal + message, args));
     }
 
 }

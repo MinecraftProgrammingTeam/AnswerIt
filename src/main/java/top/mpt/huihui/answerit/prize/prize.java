@@ -55,6 +55,8 @@ public class prize {
         targetPlayer = null;
     }
 
+    /* from commands.impl.send */
+    /* from scheduler.Timer    */
     /**
      * 执行奖励
      * <p>
@@ -64,5 +66,6 @@ public class prize {
      */
     public static void executePrize(){
         prizePlayer.openInventory(targetPlayer.getInventory());
+        /* to listener.InvOpen */
     }
 }

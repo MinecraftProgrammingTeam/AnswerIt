@@ -14,6 +14,7 @@ public class send extends ICommand {
         super("send", "", "no-usage");
     }
 
+    /* from commands.impl.setAnswer(with Player Execute) */
     public boolean onCommand(CommandSender sender, String[] args){
         // args[0] == 答对啦！
         // args[1] == NameFlying(提问者)
@@ -26,20 +27,20 @@ public class send extends ICommand {
                 PlayerUtils.send(sender, "#AQUA#您输入的格式并不正确！");
             } else if (args[0].equals("答对啦！")){
                 PlayerUtils.send(sender, "#GREEN#答对啦！");
-                ChatUtils.broadcast("%s#GOLD#玩家： #AQUA#%s #GOLD#答对了 #BLUE#%s #GOLD#的问题。", Main.normal, sender.getName(), args[1]);
+                ChatUtils.broadcast("#GOLD#玩家： #AQUA#%s #GOLD#答对了 #BLUE#%s #GOLD#的问题。", sender.getName(), args[1]);
                 prize.setPrizePlayer((Player) sender);
                 prize.setTargetPlayer(Bukkit.getPlayer(args[1]));
                 prize.executePrize();
             } else if (args[0].equals("答错了！")){
                 PlayerUtils.send(sender, "#RED#答错了qwq");
-                ChatUtils.broadcast("%s#RED#玩家： #AQUA#%s #RED#答错了 #BLUE#%s #RED#的问题。", Main.normal, sender.getName(), args[1]);
+                ChatUtils.broadcast("#RED#玩家： #AQUA#%s #RED#答错了 #BLUE#%s #RED#的问题。", sender.getName(), args[1]);
                 prize.setTargetPlayer((Player) sender);
                 prize.setPrizePlayer(Bukkit.getPlayer(args[1]));
                 prize.executePrize();
             } else {
                 PlayerUtils.send(sender, "#GREEN#不对啊qwq，肯定是服务器出问题了，这行字按道理来说不会出现的qwq。不要找灰灰好吧");
             }
-
+            /* to prize.prize */
         } else {
             sender.sendMessage("请让玩家执行该指令.");
         }

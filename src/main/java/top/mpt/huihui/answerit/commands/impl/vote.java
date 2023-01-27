@@ -15,6 +15,7 @@ public class vote extends ICommand {
         super("vote", "", "no-usage");
     }
 
+    /* from listener.PlayerChat(with Global Player Execute) */
     public boolean onCommand(CommandSender sender, String[] args) {
         /*
          * arg[0] == true/false
@@ -37,14 +38,15 @@ public class vote extends ICommand {
                 return true;
             }
             if (args[0].equals("true")){
-                ChatUtils.broadcast("%s#GREEN#玩家： #AQUA#%s #GREEN#投给了： 答案正确", normal, sender.getName());
+                ChatUtils.broadcast("#GREEN#玩家： #AQUA#%s #GREEN#投给了： 答案正确", sender.getName());
                 voteResult.add(true);
             } else if (args[0].equals("false")){
-                ChatUtils.broadcast("%s#RED#玩家： #AQUA#%s #RED#投给了： 答案错误", normal, sender.getName());
+                ChatUtils.broadcast("#RED#玩家： #AQUA#%s #RED#投给了： 答案错误", sender.getName());
                 voteResult.add(false);
             }
             // 投票列表添加玩家
             voteList.add(sender.getName());
+            /* influence scheduler.Timer */
         } else {
             sender.sendMessage("请让玩家执行该指令");
         }

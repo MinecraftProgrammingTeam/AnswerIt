@@ -1,5 +1,6 @@
 package top.mpt.huihui.answerit;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.mpt.huihui.answerit.executor.CommandHandler;
@@ -24,7 +25,7 @@ public final class Main extends JavaPlugin {
     public static List<String> voteList = new ArrayList<>();
     // 避免玩家投票结束后进行投票
     public static boolean canVote = false;
-    // 设置奖励玩家
+    // 设置normal项（用于broadcast）
     public static String normal = BLUE + "[AnswerIt] ";
     @Override
     public void onEnable() {
@@ -38,6 +39,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerChat(), this);
         getServer().getPluginManager().registerEvents(new InvOpen(), this);
         getLogger().info(normal + ChatColor.AQUA + "插件已启用");
+        /* waiting player commands */
     }
 
     @Override
