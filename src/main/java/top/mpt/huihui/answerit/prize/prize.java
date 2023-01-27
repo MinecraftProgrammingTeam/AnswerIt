@@ -10,7 +10,7 @@ public class prize {
     private static Player prizePlayer;
     private static Player targetPlayer;
     /**
-     * 现在是否可以奖励
+     * 现在是否可以奖励(仅select，write不需要这个)
      */
     public static boolean canPrize = false;
 
