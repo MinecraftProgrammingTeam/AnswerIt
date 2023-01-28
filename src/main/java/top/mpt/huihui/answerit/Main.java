@@ -1,6 +1,5 @@
 package top.mpt.huihui.answerit;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.mpt.huihui.answerit.executor.CommandHandler;

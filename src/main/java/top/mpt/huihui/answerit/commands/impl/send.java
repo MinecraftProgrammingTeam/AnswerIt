@@ -3,7 +3,6 @@ package top.mpt.huihui.answerit.commands.impl;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;

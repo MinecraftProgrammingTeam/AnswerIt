@@ -1,12 +1,10 @@
 package top.mpt.huihui.answerit.listener;
 
-import jdk.jpackage.internal.Log;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.prize.prize;
-import top.mpt.huihui.answerit.utils.LogUtils;
 
 public class InvOpen implements Listener {
     /* from prize.prize */
