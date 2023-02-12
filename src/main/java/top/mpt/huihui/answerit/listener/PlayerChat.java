@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
-import sun.security.krb5.Config;
 import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.impl.q;
 import top.mpt.huihui.answerit.scheduler.Timer;

@@ -9,6 +9,7 @@ import top.mpt.huihui.answerit.listener.InvOpen;
 import top.mpt.huihui.answerit.listener.PlayerChat;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,12 @@ public final class Main extends JavaPlugin {
         // lang sys
         File file = new File(getDataFolder() + "\\lang", getConfig().getString("lang"));
         config = YamlConfiguration.loadConfiguration(file);
+        config.options().copyDefaults();
+        try {
+            config.save(file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         // 指令
         getCommand("answer").setExecutor(new CommandHandler());
         // 注册事件
