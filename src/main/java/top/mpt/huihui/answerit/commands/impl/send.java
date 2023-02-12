@@ -21,7 +21,7 @@ public class send extends ICommand {
         // args[1] == NameFlying(提问者)
         if (sender instanceof Player){
             if (!prize.canPrize){
-                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "player_cant_answer"));
+                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "global.player_cant_answer"));
                 return true;
             }
             if (args.length != 2){

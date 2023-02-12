@@ -17,7 +17,7 @@ public class reload extends ICommand {
     public boolean onCommand(CommandSender sender, String[] args) {
         JavaPlugin main = getPlugin(Main.class);
         main.reloadConfig();
-        File file = new File(getPlugin(Main.class).getDataFolder() + "\\lang", main.getConfig().getString("lang"));
+        File file = new File(main.getDataFolder() + "\\lang", main.getConfig().getString("lang"));
         config = YamlConfiguration.loadConfiguration(file);
         sender.sendMessage("[AnswerIt] Plugin Reload Completed");
         return true;

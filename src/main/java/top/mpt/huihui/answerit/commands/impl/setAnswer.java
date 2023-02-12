@@ -38,7 +38,7 @@ public class setAnswer extends ICommand {
             // 发送消息
             sendQuestion(((Player) sender).getPlayer(), args[2], args[3]);
         } else {
-            sender.sendMessage((String) ConfigUtils.getConfig(config, "mode_err"));
+            sender.sendMessage((String) ConfigUtils.getConfig(config, "sender_err"));
         }
         return true;
     }

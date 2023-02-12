@@ -43,6 +43,12 @@ public class q extends ICommand {
             q.sender = (Player)sender;
             // ClickEvent用
             TextComponent message = null;
+            // 防止index out of range
+            if (args.length < 3){
+                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "global.command_err_format"));
+                PlayerUtils.send(sender, "/answer q [PlayerName] [Question] [Type] [answer*n if select]");
+                return true;
+            }
             // 接收问答的人
             // 给event传参用
             target = Bukkit.getPlayer(args[0]);
