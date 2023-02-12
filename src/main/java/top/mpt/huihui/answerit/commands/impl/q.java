@@ -5,11 +5,13 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import top.mpt.huihui.answerit.Main;
+import sun.security.krb5.Config;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
+import top.mpt.huihui.answerit.utils.ConfigUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
+import static top.mpt.huihui.answerit.Main.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +49,7 @@ public class q extends ICommand {
             target = Bukkit.getPlayer(args[0]);
             if (Objects.equals(args[2], "select") || Objects.equals(args[2], "Select")){
                 // 给玩家发送消息
-                PlayerUtils.send(sender, "#AQUA#请选择一个正确答案： ");
+                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "select.player_choose_answer"));
                 // 定义回答文本
                 StringBuilder answerText = new StringBuilder();
                 // 判断回答文本
@@ -81,15 +83,20 @@ public class q extends ICommand {
                 /* then to commands.impl.setAnswer */
 
             } else if (Objects.equals(args[2], "write") || Objects.equals(args[2], "Write")){
-                PlayerUtils.send(target, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
-                PlayerUtils.send(target, "#AQUA#提问类型： Write");
-                PlayerUtils.send(target, "#GREEN#提问内容： #RESET#%s", args[1]);
-                PlayerUtils.send(target, "#RED#请在输入框内输入答案，然后将交由提问者和其他玩家共同判断。");
-                ChatUtils.broadcast("#GREEN#玩家： #AQUA#%s #GREEN#收到了来自： #GOLD#%s#GREEN# 的提问。",
+                List<String> global_receiver_info = (List<String>) ConfigUtils.getListConfig(config, "global.receiver_info");
+                List<String> global_broadcast_info = (List<String>) ConfigUtils.getListConfig(config, "global.broadcast_info");
+                PlayerUtils.send(target, "#AQUA#=====================================");
+                PlayerUtils.send(target, global_receiver_info.get(0), sender.getName());
+                PlayerUtils.send(target, global_receiver_info.get(1) + " Write");
+                PlayerUtils.send(target, global_receiver_info.get(2), args[1]);
+                PlayerUtils.send(target, global_receiver_info.get(3));
+
+                ChatUtils.broadcast(global_broadcast_info.get(0),
                         target.getName(), sender.getName());
-                ChatUtils.broadcast("#AQUA#提问内容： #RESET#%s", args[1]);
-                ChatUtils.broadcast("#GREEN#正在等待玩家#AQUA#%s#GREEN#作答", target.getName());
-                Main.isCheckChat = true;
+                PlayerUtils.send(target, "#AQUA#=====================================");
+                ChatUtils.broadcast(global_broadcast_info.get(1), args[1]);
+                ChatUtils.broadcast(global_broadcast_info.get(2), target.getName());
+                isCheckChat = true;
                 // 假设玩家会答对，timer那里可以直接execute
                 prize.setPrizePlayer(target);
                 prize.setTargetPlayer((Player) sender);
@@ -99,7 +106,7 @@ public class q extends ICommand {
             }
 
         } else {
-            sender.sendMessage(ChatUtils.translateColor("#RED#请让玩家执行指令！"));
+            sender.sendMessage((String) ConfigUtils.getConfig(config, "sender_err"));
         }
         return true;
     }

@@ -1,3 +1,7 @@
+# Language
+lang: "zh_cn.yml"
+
 # Write模式下，投票的等待时间(秒)
 # 需要reload启用
 Write-wait-time: 30
+

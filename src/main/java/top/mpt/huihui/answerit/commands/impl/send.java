@@ -3,10 +3,13 @@ package top.mpt.huihui.answerit.commands.impl;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import sun.security.krb5.Config;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
+import top.mpt.huihui.answerit.utils.ConfigUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
+import static top.mpt.huihui.answerit.Main.*;
 
 public class send extends ICommand {
     public send(){
@@ -19,20 +22,18 @@ public class send extends ICommand {
         // args[1] == NameFlying(提问者)
         if (sender instanceof Player){
             if (!prize.canPrize){
-                PlayerUtils.send(sender, "#RED#想啥呢？答完题了还想再答是吧？？？给爷爬！！！");
+                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "player_cant_answer"));
                 return true;
             }
             if (args.length != 2){
-                PlayerUtils.send(sender, "#AQUA#您输入的格式并不正确！");
+                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "global.command_err_format"));
             } else if (args[0].equals("答对啦！")){
-                PlayerUtils.send(sender, "#GREEN#答对啦！");
-                ChatUtils.broadcast("#GOLD#玩家： #AQUA#%s #GOLD#答对了 #BLUE#%s #GOLD#的问题。", sender.getName(), args[1]);
+                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "select.target_choose_right_answer"), sender.getName(), args[1]);
                 prize.setPrizePlayer((Player) sender);
                 prize.setTargetPlayer(Bukkit.getPlayer(args[1]));
                 prize.executePrize();
             } else if (args[0].equals("答错了！")){
-                PlayerUtils.send(sender, "#RED#答错了qwq");
-                ChatUtils.broadcast("#RED#玩家： #AQUA#%s #RED#答错了 #BLUE#%s #RED#的问题。", sender.getName(), args[1]);
+                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "select.target_choose_wrong_answer"), sender.getName(), args[1]);
                 prize.setTargetPlayer((Player) sender);
                 prize.setPrizePlayer(Bukkit.getPlayer(args[1]));
                 prize.executePrize();
@@ -41,7 +42,7 @@ public class send extends ICommand {
             }
             /* to prize.prize */
         } else {
-            sender.sendMessage("请让玩家执行该指令.");
+            sender.sendMessage((String) ConfigUtils.getConfig(config, "sender_err"));
         }
         return true;
     }

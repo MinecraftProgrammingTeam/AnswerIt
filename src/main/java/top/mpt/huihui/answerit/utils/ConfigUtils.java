@@ -1,6 +1,10 @@
 package top.mpt.huihui.answerit.utils;
 
+import org.bukkit.configuration.file.FileConfiguration;
 import top.mpt.huihui.answerit.Main;
+
+import java.io.File;
+import java.util.List;
 
 /**
  * Config工具类
@@ -12,9 +16,8 @@ public class ConfigUtils {
      * @param path 名称
      * @return ConfigValue
      */
-    public static Object getConfig(String path) {
-        Main instance = Main.instance;
-        return instance.getConfig().get(path);
+    public static Object getConfig(FileConfiguration config, String path) {
+        return config.get(path);
     }
 
     /**
@@ -23,9 +26,13 @@ public class ConfigUtils {
      * @param defaultValue 默认值
      * @return ConfigValue
      */
-    public static Object getConfig(String path, Object defaultValue) {
-        Object result = getConfig(path);
+    public static Object getConfig(FileConfiguration config, String path, Object defaultValue) {
+        Object result = getConfig(config, path);
         return result == null ? defaultValue : result;
+    }
+
+    public static List<?> getListConfig(FileConfiguration config, String path){
+        return config.getList(path);
     }
 
 }

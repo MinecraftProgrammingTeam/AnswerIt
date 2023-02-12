@@ -7,8 +7,11 @@ import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.commands.ICommand;
 import org.bukkit.command.CommandSender;
 import top.mpt.huihui.answerit.utils.ChatUtils;
+import top.mpt.huihui.answerit.utils.ConfigUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
+import static top.mpt.huihui.answerit.Main.*;
 
+import java.util.List;
 import java.util.Objects;
 
 public class setAnswer extends ICommand {
@@ -35,7 +38,7 @@ public class setAnswer extends ICommand {
             // 发送消息
             sendQuestion(((Player) sender).getPlayer(), args[2], args[3]);
         } else {
-            sender.sendMessage("请让玩家执行该指令！！！");
+            sender.sendMessage((String) ConfigUtils.getConfig(config, "mode_err"));
         }
         return true;
     }
@@ -60,9 +63,11 @@ public class setAnswer extends ICommand {
          * 回答选项/请在公屏上打出答案：[很好] [非常好] [不好] [完全不好]
          * 答对了有奖励，答错了有惩罚(?
          */
-        PlayerUtils.send(target, "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问", sender.getName());
-        PlayerUtils.send(target, "#AQUA#提问类型： %s", type );
-        PlayerUtils.send(target, "#GREEN#提问内容： #RESET#%s", text);
+        List<String> global_receiver_info = (List<String>) ConfigUtils.getListConfig(config, "global.receiver_info");
+        PlayerUtils.send(target, "#AQUA#=====================================");
+        PlayerUtils.send(target, global_receiver_info.get(0), sender.getName());
+        PlayerUtils.send(target, global_receiver_info.get(1) + " %s", type );
+        PlayerUtils.send(target, global_receiver_info.get(2), text);
         // 如果提问类型是select
         if (Objects.equals(type, "select") || Objects.equals(type, "Select")){
             String[] answerText = setAnswer.answerText.split(",");
@@ -85,11 +90,12 @@ public class setAnswer extends ICommand {
                     message.addExtra(single);
                 }
             }
+            PlayerUtils.send(target, "#AQUA#=====================================");
             target.spigot().sendMessage(message);
             /* wait Target Answer */
             /* to commands.impl.send */
         } else { // 提问类型不是write也不是select
-            PlayerUtils.send(target, "#RED#提问类型有误，请让%s检查一下。", sender.getName());
+            PlayerUtils.send(target, ConfigUtils.getConfig(config, "mode_err"), sender.getName());
         }
     }
 }

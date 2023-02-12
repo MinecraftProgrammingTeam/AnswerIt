@@ -1,0 +1,47 @@
+# 在这个文档里，player代指提问者，target代指被提问者
+# 注意，其中的颜色代码(如#AQUA#)可以修改ChatColor中有的颜色，占位符(如%s)请不要修改
+
+sender_err: "请让玩家执行指令！"
+mode_err: "#RED#提问类型有误，请让%s检查一下。"
+
+global:
+  receiver_info:
+    - "#YELLOW#您收到了来自#AQUA#[%s]#YELLOW#的提问"
+    - "#AQUA#提问类型："
+    - "#GREEN#提问内容： #RESET#%s"
+    - "#RED#请在输入框内输入答案，然后将交由提问者和其他玩家共同判断。"
+  broadcast_info:
+    - "#GREEN#玩家： #AQUA#%s #GREEN#收到了来自： #GOLD#%s#GREEN# 的提问。"
+    - "#AQUA#提问内容： #RESET#%s"
+    - "#GREEN#正在等待玩家#AQUA#%s#GREEN#作答"
+
+  player_cant_answer: "#RED#想啥呢？答完题了还想再答是吧？？？给爷爬！！！"
+  command_err_format: "#AQUA#您输入的格式并不正确！"
+
+select:
+  player_choose_answer: "#AQUA#请选择一个正确答案： "
+  # broadcast_info
+  target_choose_right_answer: "#GOLD#玩家： #AQUA#%s #GOLD#答对了 #BLUE#%s #GOLD#的问题。"
+  target_choose_wrong_answer: "#RED#玩家： #AQUA#%s #RED#答错了 #BLUE#%s #RED#的问题。"
+
+write:
+  player_cant_vote: "#RED#您已经参与过投票了，请不要重复投票！！！"
+  vote_timeout: "#RED#投票时间已过！"
+  # please don't delete space
+  vote_right: "#GREEN#[正确]  "
+  vote_wrong: "#RED#[错误]"
+  # broadcast_info
+  server_vote_right_info: "#GREEN#玩家： #AQUA#%s #GREEN#投给了： 答案正确"
+  server_vote_wrong_info: "#GREEN#玩家： #AQUA#%s #GREEN#投给了： 答案正确"
+  # target_answer
+  target_answer_info: "#GREEN#%s的回答是： #AQUA#%s"
+
+timer:
+  # timer
+  timer_start_info: "#RED#计时#AQUA#%d#RED#秒，开始。"
+  timer_start_tip: "#RED#请在规定时间内完成投票。"
+
+  timer_over_summary: "#GREEN#投票结束，有%d人投了答案正确，%d人投了答案错误。"
+  votes_equal: "#GOLD#票数相等，没有奖励也没有惩罚(悲"
+  votes_right: "#GREEN#答案正确！"
+  votes_wrong: "#RED#答案错误！"

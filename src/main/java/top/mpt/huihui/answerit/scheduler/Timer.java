@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
+import top.mpt.huihui.answerit.utils.ConfigUtils;
 
 import static top.mpt.huihui.answerit.Main.*;
 
@@ -25,14 +26,14 @@ public class Timer extends BukkitRunnable {
         // 清空数组
         voteResult.clear();
         voteList.clear();
-        ChatUtils.broadcast("#GREEN#投票结束，有%d人投了答案正确，%d人投了答案错误。", trueCount, falseCount);
+        ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "timer.timer_over_summary"), trueCount, falseCount);
         if (trueCount == falseCount){
-            ChatUtils.broadcast("#GOLD#票数相等，没有奖励也没有惩罚(悲");
+            ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "timer.votes_equal"));
         } else if (trueCount > falseCount){
-            ChatUtils.broadcast("#GREEN#答案正确！");
+            ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "timer.votes_right"));
             prize.executePrize();
         } else {
-            ChatUtils.broadcast("#RED#答案错误！");
+            ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "timer.votes_wrong"));
             // 调换顺序
             Player prizePlayer = prize.getPrizePlayer();
             prize.setPrizePlayer(prize.getTargetPlayer());

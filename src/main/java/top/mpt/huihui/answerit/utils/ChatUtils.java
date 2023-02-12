@@ -20,9 +20,9 @@ public class ChatUtils {
      * @param string 带特殊颜色代码的文本
      * @return 转换后的文本
      */
-    public static String translateColor(String string) {
+    public static String translateColor(Object string) {
         // 正则表达式替换
-        String result = string; // #RED#[红队]
+        String result = (String) string; // #RED#[红队]
         Pattern regex = Pattern.compile("#[A-Z_-]+#");
         Matcher matcher = regex.matcher(result);
         while (matcher.find()) {
@@ -43,8 +43,8 @@ public class ChatUtils {
      * @param args 占位符替换
      * @return 转换后的文本
      */
-    public static String translateColor(String string, Object... args) {
-        return translateColor(String.format(string, args));
+    public static String translateColor(Object string, Object... args) {
+        return translateColor(String.format((String) string, args));
     }
 
     /**

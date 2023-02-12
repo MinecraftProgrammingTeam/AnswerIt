@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import sun.security.krb5.Config;
 import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.impl.q;
 import top.mpt.huihui.answerit.scheduler.Timer;
@@ -27,16 +28,16 @@ public class PlayerChat implements Listener {
             if (event.getPlayer().equals(target)){
                 // 设置聊天发送的格式
                 event.setCancelled(true);
-                ChatUtils.broadcast("#GREEN#%s的回答是： #AQUA#%s", target.getName(), event.getMessage());
+                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "write.target_answer_info"), target.getName(), event.getMessage());
                 // 设置ClickEvent
                 ClickEvent clickEventT = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer vote true");
                 ClickEvent clickEventF = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer vote false");
                 // 设置文字
                 TextComponent componentT = new TextComponent(
-                        ChatUtils.translateColor("#GREEN#[正确]  ")
+                        ChatUtils.translateColor(ConfigUtils.getConfig(config, "write.vote_right"))
                 );
                 TextComponent componentF = new TextComponent(
-                        ChatUtils.translateColor("#RED#[错误]")
+                        ChatUtils.translateColor(ConfigUtils.getConfig(config, "write.vote_wrong"))
                 );
                 // setClickEvent
                 componentT.setClickEvent(clickEventT);
@@ -48,9 +49,9 @@ public class PlayerChat implements Listener {
                 // 显示给全体玩家
                 Bukkit.spigot().broadcast(componentT);
                 // 开始计时
-                int delaySecond = (int) ConfigUtils.getConfig("Write-wait-time", 30);
-                ChatUtils.broadcast("#RED#计时#AQUA#%d#RED#秒，开始。", delaySecond);
-                ChatUtils.broadcast("#RED#请在规定时间内完成投票。");
+                int delaySecond = (int) ConfigUtils.getConfig(instance.getConfig(), "Write-wait-time", 30);
+                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "timer.timer_start_info"), delaySecond);
+                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "timer.timer_start_tip"));
                 new Timer().runTaskLater(Main.getPlugin(Main.class), delaySecond * 20L);
                 // 撤销事件
                 isCheckChat = false;

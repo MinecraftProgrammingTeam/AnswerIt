@@ -1,0 +1,48 @@
+# In this document, player refers to the questioner and target refers to the respondent
+# PS. the color code (such as #AQUA#) can modify the color in ChatColor
+# Please do not modify the placeholder (such as %s/%d)
+
+sender_err: "Please let the player to execute the command!"
+mode_err: "#RED#Mode is wrong, please ask %s to check about."
+
+global:
+  receiver_info:
+    - "#YELLOW#You received a question from #AQUA#[%s]"
+    - "#AQUA#Type:"
+    - "#GREEN#Question: #RESET#%s"
+    - "#RED#Please enter the answer in the chat table, and then it will be judged by the questioner and other players."
+  broadcast_info:
+    - "#GREEN#Player: #AQUA#%s #GREEN#recieved the question from: #GOLD#%s"
+    - "#AQUA#Question： #RESET#%s"
+    - "#GREEN#Waiting #AQUA#%s#GREEN# answer"
+
+  player_cant_answer: "#RED#You cannot answer it again!!!"
+  command_err_format: "#AQUA#The format you entered is incorrect!"
+
+select:
+  player_choose_answer: "#AQUA#Please select an answer: "
+  # broadcast_info
+  target_choose_right_answer: "#GOLD#Player: #AQUA#%s #GOLD#answered #BLUE#%s 's #GOLD#question correctly."
+  target_choose_wrong_answer: "#RED#Player: #AQUA#%s #RED#answered #BLUE#%s 's #RED#question incorrectly."
+
+write:
+  player_cant_vote: "#RED#You have already voted, please do not vote again!"
+  vote_timeout: "#RED#Voting time out."
+  # please don't delete space
+  vote_right: "#GREEN#[Correct]  "
+  vote_wrong: "#RED#[Incorrect]"
+  # broadcast_info
+  server_vote_right_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for Correct"
+  server_vote_wrong_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for Incorrect"
+  # target_answer
+  target_answer_info: "#GREEN#%s 's answer is #AQUA#%s"
+
+timer:
+  # timer
+  timer_start_info: "#RED#Timing #AQUA#%d #RED#seconds, now start"
+  timer_start_tip: "#RED#Please complete the voting within the specified time."
+
+  timer_over_summary: "#GREEN#Vote closed. %d players vote for Correct，%d vote for Incorrect"
+  votes_equal: "#GOLD#Equal votes, no reward or punishment"
+  votes_right: "#GREEN#Answer correct!"
+  votes_wrong: "#RED#Answer Incorrect!"

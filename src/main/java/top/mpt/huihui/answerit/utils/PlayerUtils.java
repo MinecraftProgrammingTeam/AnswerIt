@@ -15,7 +15,7 @@ public class PlayerUtils {
      * @param sender 玩家或控制台
      * @param message 要发送的消息
      */
-    public static void send(CommandSender sender, String message) {
+    public static void send(CommandSender sender, Object message) {
         StringBuilder sb = new StringBuilder();
         Collections.singletonList(message).forEach(it -> sb.append(it).append(" "));
         sender.sendMessage(ChatUtils.translateColor(sb.toString()));
@@ -27,7 +27,7 @@ public class PlayerUtils {
      * @param message 要发送的信息
      * @param args 占位符替换
      */
-    public static void send(CommandSender sender, String message, Object... args) {
-        send(sender, String.format(message, args));
+    public static void send(CommandSender sender, Object message, Object... args) {
+        send(sender, String.format((String) message, args));
     }
 }

@@ -1,11 +1,14 @@
 package top.mpt.huihui.answerit;
 
 import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.mpt.huihui.answerit.executor.CommandHandler;
 import top.mpt.huihui.answerit.listener.InvOpen;
 import top.mpt.huihui.answerit.listener.PlayerChat;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,8 @@ public final class Main extends JavaPlugin {
     public static List<String> voteList = new ArrayList<>();
     // 避免玩家投票结束后进行投票
     public static boolean canVote = false;
+    // 用于lang sys
+    public static FileConfiguration config;
     // 设置normal项（用于broadcast）
     public static String normal = BLUE + "[AnswerIt] ";
     @Override
@@ -32,12 +37,15 @@ public final class Main extends JavaPlugin {
         // config
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        // lang sys
+        File file = new File(getDataFolder() + "\\lang", getConfig().getString("lang"));
+        config = YamlConfiguration.loadConfiguration(file);
         // 指令
         getCommand("answer").setExecutor(new CommandHandler());
         // 注册事件
         getServer().getPluginManager().registerEvents(new PlayerChat(), this);
         getServer().getPluginManager().registerEvents(new InvOpen(), this);
-        getLogger().info(normal + ChatColor.AQUA + "插件已启用");
+        getLogger().info(normal + ChatColor.AQUA + "Plugin Enabled");
         /* waiting player commands */
     }
 
