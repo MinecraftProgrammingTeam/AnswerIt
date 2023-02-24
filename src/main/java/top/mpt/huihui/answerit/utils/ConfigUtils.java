@@ -1,9 +1,7 @@
 package top.mpt.huihui.answerit.utils;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import top.mpt.huihui.answerit.Main;
 
-import java.io.File;
 import java.util.List;
 
 /**
@@ -13,6 +11,7 @@ import java.util.List;
 public class ConfigUtils {
     /**
      * 获取Config
+     * @param config FileConfiguration
      * @param path 名称
      * @return ConfigValue
      */
@@ -22,6 +21,7 @@ public class ConfigUtils {
 
     /**
      * 获取Config
+     * @param config FileConfiguration
      * @param path 名称
      * @param defaultValue 默认值
      * @return ConfigValue

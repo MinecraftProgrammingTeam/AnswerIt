@@ -8,8 +8,9 @@ import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
-import top.mpt.huihui.answerit.utils.ConfigUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
+import top.mpt.huihui.answerit.utils.i18N;
+
 import static top.mpt.huihui.answerit.Main.*;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class q extends ICommand {
             TextComponent message = null;
             // 防止index out of range
             if (args.length < 3){
-                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "global.command_err_format"));
+                PlayerUtils.send(sender, i18N.getLang("global.command_err_format"));
                 PlayerUtils.send(sender, "/answer q [PlayerName] [Question] [Type] [answer*n if select]");
                 return true;
             }
@@ -54,7 +55,7 @@ public class q extends ICommand {
             target = Bukkit.getPlayer(args[0]);
             if (Objects.equals(args[2], "select") || Objects.equals(args[2], "Select")){
                 // 给玩家发送消息
-                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "select.player_choose_answer"));
+                PlayerUtils.send(sender, i18N.getLang("select.player_choose_answer"));
                 // 定义回答文本
                 StringBuilder answerText = new StringBuilder();
                 // 判断回答文本
@@ -88,8 +89,8 @@ public class q extends ICommand {
                 /* then to commands.impl.setAnswer */
 
             } else if (Objects.equals(args[2], "write") || Objects.equals(args[2], "Write")){
-                List<String> global_receiver_info = (List<String>) ConfigUtils.getListConfig(config, "global.receiver_info");
-                List<String> global_broadcast_info = (List<String>) ConfigUtils.getListConfig(config, "global.broadcast_info");
+                List<String> global_receiver_info = (List<String>) i18N.getLangList("global.receiver_info");
+                List<String> global_broadcast_info = (List<String>) i18N.getLangList("global.broadcast_info");
                 PlayerUtils.send(target, "#AQUA#=====================================");
                 PlayerUtils.send(target, global_receiver_info.get(0), sender.getName());
                 PlayerUtils.send(target, global_receiver_info.get(1) + " Write");
@@ -111,7 +112,7 @@ public class q extends ICommand {
             }
 
         } else {
-            sender.sendMessage((String) ConfigUtils.getConfig(config, "sender_err"));
+            sender.sendMessage((String) i18N.getLang("sender_err"));
         }
         return true;
     }

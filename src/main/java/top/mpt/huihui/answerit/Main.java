@@ -1,6 +1,5 @@
 package top.mpt.huihui.answerit;
 
-import com.google.common.base.Charsets;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -8,9 +7,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import top.mpt.huihui.answerit.executor.CommandHandler;
 import top.mpt.huihui.answerit.listener.InvOpen;
 import top.mpt.huihui.answerit.listener.PlayerChat;
+import top.mpt.huihui.answerit.utils.i18N;
 
 import java.io.*;
-import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,11 +39,11 @@ public final class Main extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         File file = new File(getDataFolder() + "\\lang\\", getConfig().getString("lang"));
-        if (!file.exists()) {
-            saveResource("lang/zh_cn.yml", false);
-            saveResource("lang/en_us.yml", false);
-        }
+        saveResource("lang/zh_cn.yml", false);
+        saveResource("lang/en_us.yml", false);
+
         config = YamlConfiguration.loadConfiguration(file);
+        i18N.setYaml(config);
 
         // 指令
         getCommand("answer").setExecutor(new CommandHandler());

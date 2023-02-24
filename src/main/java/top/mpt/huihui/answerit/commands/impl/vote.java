@@ -4,8 +4,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.utils.ChatUtils;
-import top.mpt.huihui.answerit.utils.ConfigUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
+import top.mpt.huihui.answerit.utils.i18N;
 
 import java.util.Objects;
 
@@ -25,31 +25,31 @@ public class vote extends ICommand {
             // 防止重复投票
             for (String player : voteList){
                 if (Objects.equals(player, sender.getName())){
-                    PlayerUtils.send(sender, ConfigUtils.getConfig(config, "write.player_cant_vote"));
+                    PlayerUtils.send(sender, i18N.getLang("write.player_cant_vote"));
                     return true;
                 }
             }
             // 避免玩家投票结束后再次投票
             if (!canVote){
-                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "write.vote_timeout"));
+                PlayerUtils.send(sender, i18N.getLang("write.vote_timeout"));
                 return true;
             }
             if (args.length != 1){
-                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "global.command_err_format"));
+                PlayerUtils.send(sender, i18N.getLang("write.vote_timeout"));
                 return true;
             }
             if (args[0].equals("true")){
-                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "write.server_vote_right_info"), sender.getName());
+                ChatUtils.broadcast((String) i18N.getLang("write.server_vote_right_info"), sender.getName());
                 voteResult.add(true);
             } else if (args[0].equals("false")){
-                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "write.server_vote_wrong_info"), sender.getName());
+                ChatUtils.broadcast((String) i18N.getLang("write.server_vote_wrong_info"), sender.getName());
                 voteResult.add(false);
             }
             // 投票列表添加玩家
             voteList.add(sender.getName());
             /* influence scheduler.Timer */
         } else {
-            sender.sendMessage((String) ConfigUtils.getConfig(config, "sender_err"));
+            sender.sendMessage((String) i18N.getLang("sender_err"));
         }
         return true;
     }

@@ -6,8 +6,11 @@ import org.bukkit.entity.Player;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
-import top.mpt.huihui.answerit.utils.ConfigUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
+import top.mpt.huihui.answerit.utils.i18N;
+
+import java.util.Objects;
+
 import static top.mpt.huihui.answerit.Main.*;
 
 public class send extends ICommand {
@@ -21,27 +24,30 @@ public class send extends ICommand {
         // args[1] == NameFlying(提问者)
         if (sender instanceof Player){
             if (!prize.canPrize){
-                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "global.player_cant_answer"));
+                PlayerUtils.send(sender, i18N.getLang("global.player_cant_answer"));
                 return true;
             }
-            if (args.length != 2){
-                PlayerUtils.send(sender, ConfigUtils.getConfig(config, "global.command_err_format"));
+            if (args.length != 3){
+                PlayerUtils.send(sender, i18N.getLang("global.command_err_format"));
+                return true;
+            } if (!args[2].equals(setAnswer.token)){ // 检验token
+                PlayerUtils.send(sender, "#RED#Token error.");
             } else if (args[0].equals("答对啦！")){
-                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "select.target_choose_right_answer"), sender.getName(), args[1]);
+                ChatUtils.broadcast((String) i18N.getLang("select.target_choose_right_answer"), sender.getName(), args[1]);
                 prize.setPrizePlayer((Player) sender);
                 prize.setTargetPlayer(Bukkit.getPlayer(args[1]));
                 prize.executePrize();
             } else if (args[0].equals("答错了！")){
-                ChatUtils.broadcast((String) ConfigUtils.getConfig(config, "select.target_choose_wrong_answer"), sender.getName(), args[1]);
+                ChatUtils.broadcast((String) i18N.getLang("select.target_choose_wrong_answer"), sender.getName(), args[1]);
                 prize.setTargetPlayer((Player) sender);
                 prize.setPrizePlayer(Bukkit.getPlayer(args[1]));
                 prize.executePrize();
             } else {
-                PlayerUtils.send(sender, "#GREEN#不对啊qwq，肯定是服务器出问题了，这行字按道理来说不会出现的qwq。不要找灰灰好吧");
+                PlayerUtils.send(sender, "#RED#Error format was executed by players.");
             }
             /* to prize.prize */
         } else {
-            sender.sendMessage((String) ConfigUtils.getConfig(config, "sender_err"));
+            sender.sendMessage((String) i18N.getLang("sender_err"));
         }
         return true;
     }
