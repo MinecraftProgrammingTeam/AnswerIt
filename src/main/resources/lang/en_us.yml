@@ -1,6 +1,7 @@
 # In this file, player refers to the questioner and target refers to the respondent
 # PS. the color code (such as #AQUA#) can modify the color in org.bukkit.ChatColor
 # Please do not modify the placeholder (such as %s & %d)
+# DO NOT DELETE ANY SPACES IN QUOTATION MARK
 
 sender_err: "Please let the player to execute the command!"
 mode_err: "#RED#Mode is wrong, please ask %s to check about."

@@ -51,7 +51,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerChat(), this);
         getServer().getPluginManager().registerEvents(new InvOpen(), this);
         getLogger().info(normal + ChatColor.AQUA + "Plugin Enabled");
-        /* waiting player commands */
+        /* wait player's commands */
     }
 
     @Override

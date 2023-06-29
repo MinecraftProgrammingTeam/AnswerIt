@@ -1,5 +1,6 @@
 # 在这个文档里，player代指提问者，target代指被提问者
 # 注意，其中的颜色代码(如#AQUA#)可以修改org.bukkit.ChatColor中有的颜色，占位符(如%s)请不要修改
+# 请不要删除任何包含在引号内的空格
 
 sender_err: "请让玩家执行指令！"
 mode_err: "#RED#提问类型有误，请让%s检查一下。"
