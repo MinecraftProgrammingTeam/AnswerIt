@@ -1,5 +1,10 @@
 # AnswerIt - 简约的问答插件
 
+
+# Select your language
+
+<a href=".\README.md">简体中文</a> <a href=".\README_EN.md">English</a> 
+
 ![](https://img.shields.io/badge/Spigot%2FPaper-1.13%2B-orange)
 ![](https://img.shields.io/github/license/MinecraftProgrammingTeam/AnswerIt)
 ![](https://img.shields.io/badge/made%20in-MPT-important)
