@@ -22,7 +22,7 @@ Download the latest version in [Release](https://github.com/MinecraftProgramming
 
 Test Environment("Server + Client"): `Paper1.16.5 + Minecraft 1.16.5`
 
-Suggested server version>=1.16.5
+1.16.5 ≤ Suggested server version ≤ 1.19
 
 # To operator
 
@@ -65,6 +65,7 @@ ItemUtils are imported but not used, originally intended as a reward and punishm
 - [x] Reward And Punishment System
 
 ## Issues:
+
 Welcome to ask questions in Issue
 
 ## 咕咕咕
