@@ -3,7 +3,7 @@
 
 # Select your language
 
-<a href=".\README.md">简体中文</a> <a href=".\README_EN.md">English</a> 
+<h3><a href=".\README.md">简体中文</a> <a href=".\README_EN.md">English</a></h3>
 
 ![](https://img.shields.io/badge/Spigot%2FPaper-1.13%2B-orange)
 ![](https://img.shields.io/github/license/MinecraftProgrammingTeam/AnswerIt)
@@ -31,7 +31,7 @@
 
 插件测试环境： `Paper1.16.5 + Minecraft 1.16.5 纯净端`
 
-只要不是在我的插件测试环境上出现的问题，请换成我的测试环境后，用你触发问题的相同步骤走一遍，如果还有问题，请发布Issue
+只要不是在我的插件测试环境上出现的问题，请换成我的测试环境后，用你触发问题的相同步骤走一遍，如果还有问题，请发布Issues
 
 当然如果你懒得构建测试环境，也可以直接发布Issue（需要在提交Issue的时候写上你自己的服务端与客户端，还有加的所有mod与ModLoader）
 
