@@ -26,7 +26,7 @@ So the latest version the plugin can support is 1.19:
 
 1.16.5 ≤ Suggested server version ≤ 1.19
 
-Test Environment("Server + Client"): `Paper1.16.5 + Minecraft 1.16.5(NO MODS AND MODLOADER)`
+Test Environment("Server + Client"):  `Paper1.16.5 + Minecraft 1.16.5(NO MODS AND MODLOADER)`
 
 PS: If you have found a bug that happened isn't the same as my Test Environment, you could try to find it in my Test Environment
 
@@ -35,11 +35,11 @@ If it's happened again, please upload it in Issue
 Or you can upload it directly if you are too lazy to build a Test Environment(Please note the environment you used)
 
 Issue Format:
-    - Questions & Bugs
-    - How to find it
-    - Your Environment(Ignore if it's the same as mine)
-        - Environment Format: Server Version + Client Version(Mods + ModLoader)
-        - eg. `Paper1.16.5 + Minecraft 1.16.5(NO MODS AND MODLOADER)`
+- Questions & Bugs
+- How to find it
+- Your Environment(Ignore if it's the same as mine)
+- Environment Format: Server Version + Client Version(Mods + ModLoader)
+- eg. `Paper1.16.5 + Minecraft 1.16.5(NO MODS AND MODLOADER)`
 
 # To operator
 
