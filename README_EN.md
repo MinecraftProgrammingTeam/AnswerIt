@@ -34,7 +34,7 @@ If it's happened again, please upload it in Issue
 
 Or you can upload it directly if you are too lazy to build a Test Environment(Please note the environment you used)
 
-Issue Format:
+Issues Format:
 - Questions & Bugs
 - How to find it
 - Your Environment(Ignore if it's the same as mine)
@@ -83,7 +83,7 @@ ItemUtils are imported but not used, originally intended as a reward and punishm
 
 ## Issues:
 
-Welcome to ask questions in Issue
+Welcome to ask questions in Issues
 
 ## 咕咕咕
 
