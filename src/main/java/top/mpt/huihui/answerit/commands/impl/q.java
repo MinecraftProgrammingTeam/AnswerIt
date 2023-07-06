@@ -53,6 +53,7 @@ public class q extends ICommand {
             // 接收问答的人
             // 给event传参用
             target = Bukkit.getPlayer(args[0]);
+
             if (Objects.equals(args[2], "select") || Objects.equals(args[2], "Select")){
                 // 给玩家发送消息
                 PlayerUtils.send(sender, i18N.getLang("select.player_choose_answer"));
@@ -60,7 +61,6 @@ public class q extends ICommand {
                 StringBuilder answerText = new StringBuilder();
                 // 判断回答文本
                 for (int a = 3; a <= args.length - 1; a++){
-
                     if (a == args.length - 1){
                         answerText.append(args[a]);
                     } else {
@@ -94,13 +94,13 @@ public class q extends ICommand {
                 PlayerUtils.send(target, "#AQUA#=====================================");
                 PlayerUtils.send(target, global_receiver_info.get(0), sender.getName());
                 PlayerUtils.send(target, global_receiver_info.get(1) + " Write");
-                PlayerUtils.send(target, global_receiver_info.get(2), args[1]);
+                PlayerUtils.send(target, global_receiver_info.get(2), args[1].replace("-", " "));
                 PlayerUtils.send(target, global_receiver_info.get(3));
 
                 ChatUtils.broadcast(global_broadcast_info.get(0),
                         target.getName(), sender.getName());
                 PlayerUtils.send(target, "#AQUA#=====================================");
-                ChatUtils.broadcast(global_broadcast_info.get(1), args[1]);
+                ChatUtils.broadcast(global_broadcast_info.get(1), args[1].replace("-", " "));
                 ChatUtils.broadcast(global_broadcast_info.get(2), target.getName());
                 isCheckChat = true;
                 // 假设玩家会答对，timer那里可以直接execute

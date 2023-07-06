@@ -26,7 +26,7 @@ public class setAnswer extends ICommand {
     // 创建token，防止玩家手动输入/answer send 答对啦！
     public static String token = "";
     public boolean onCommand(CommandSender sender, String[] args){
-        // generate token
+        // Generate token
         token = getRandomString(10);
         /* args[0] = "NameFlying"
          * args[1] = "Answer"
@@ -71,7 +71,8 @@ public class setAnswer extends ICommand {
         PlayerUtils.send(target, "#AQUA#=====================================");
         PlayerUtils.send(target, global_receiver_info.get(0), sender.getName());
         PlayerUtils.send(target, global_receiver_info.get(1) + " %s", type );
-        PlayerUtils.send(target, global_receiver_info.get(2), text);
+        // text处理空格
+        PlayerUtils.send(target, global_receiver_info.get(2), text.replace("-", " "));
         // 如果提问类型是select
         if (Objects.equals(type, "select") || Objects.equals(type, "Select")){
             String[] answerText = setAnswer.answerText.split(",");
@@ -100,7 +101,7 @@ public class setAnswer extends ICommand {
             target.spigot().sendMessage(message);
             /* wait Target Answer */
             /* to commands.impl.send */
-        } else { // 提问类型不是write也不是select
+        } else { // 提问类型不是select
             PlayerUtils.send(target, i18N.getLang("mode_err"), sender.getName());
         }
     }

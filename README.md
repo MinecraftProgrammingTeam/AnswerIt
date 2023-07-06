@@ -23,9 +23,24 @@
 
 下载最新的 [Release](https://github.com/MinecraftProgrammingTeam/AnswerIt/releases/latest) 放入有BukkitAPI服务端的plugins文件夹之后重启服务器即可
 
+由于1.20的API删除了 `net.md_5.bungee.api.chat.BaseComponent` 包
+
+所以本插件最大支持的版本为1.19
+
+1.13 ≤ 建议服务端版本 ≤ 1.19
+
 插件测试环境： `Paper1.16.5 + Minecraft 1.16.5 纯净端`
 
-1.16.5 ≤ 建议服务端版本 ≤ 1.19
+只要不是在我的插件测试环境上出现的问题，请换成我的测试环境后，用你触发问题的相同步骤走一遍，如果还有问题，请发布Issue
+
+当然如果你懒得构建测试环境，也可以直接发布Issue（需要在提交Issue的时候写上你自己的服务端与客户端，还有加的所有mod与ModLoader）
+
+Issue 格式:
+- 您的问题
+- 您是如何触发此问题的（请简述步骤）
+- 您的触发环境（如果和我测试环境一样就不用写）
+- 触发环境格式: 服务端版本 + 客户端版本(所有Mods + ModLoader)
+- eg. `Paper1.16.5 + Minecraft 1.16.5(NO MODS AND MODLOADER)`
 
 # 开发者悉知
 
@@ -58,7 +73,6 @@ ItemUtils引入了但是没用上，本来想算作奖罚系统的，但是咕�
 ## 简单的逻辑图（不太会画）
 
 ![](https://user-images.githubusercontent.com/64721484/214585912-42e1b229-573d-4269-adc0-1c85048b9b98.png)
-
 
 ## TODOs
 
