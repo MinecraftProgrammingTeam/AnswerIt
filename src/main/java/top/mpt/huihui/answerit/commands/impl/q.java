@@ -5,6 +5,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
@@ -13,7 +14,6 @@ import top.mpt.huihui.answerit.utils.i18N;
 
 import static top.mpt.huihui.answerit.Main.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,9 +22,7 @@ public class q extends ICommand {
     public q() {
         super("q", "", "/answer q [PlayerName] [Question] [select/wrtite] [answer] [answer] *n");
         // 传入服务器全体玩家List
-        List<String> params = new ArrayList<>();
-        Bukkit.getOnlinePlayers().forEach( it -> params.add(it.getName()) );
-        setListParams(params);
+        setListParams(Online_Players);
     }
 
     public static Player target = null;
