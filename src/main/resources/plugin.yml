@@ -17,3 +17,6 @@ permissions:
   answerop.reload:
     description: op command
     default: op
+  answerop.debug:
+    description: developer command
+    default: op

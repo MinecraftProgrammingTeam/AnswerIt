@@ -34,6 +34,7 @@ public class CommandHandler implements TabExecutor {
         registerCommand(new q());
         registerCommand(new send());
         registerCommand(new vote());
+        registerCommand(new debug());
         registerCommand(new reload());
         registerCommand(new setAnswer());
 

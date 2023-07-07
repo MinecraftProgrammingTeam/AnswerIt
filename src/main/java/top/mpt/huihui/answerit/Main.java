@@ -1,17 +1,19 @@
 package top.mpt.huihui.answerit;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.mpt.huihui.answerit.executor.CommandHandler;
 import top.mpt.huihui.answerit.listener.InvOpen;
 import top.mpt.huihui.answerit.listener.PlayerChat;
+import top.mpt.huihui.answerit.listener.PlayerJoinAndQuit;
 import top.mpt.huihui.answerit.utils.i18N;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.bukkit.ChatColor.BLUE;
 
@@ -30,6 +32,8 @@ public final class Main extends JavaPlugin {
     public static boolean canVote = false;
     // 用于lang sys
     public static FileConfiguration config;
+    // 新建数组，存放玩家，会在PlayerJoinAndQuit类和q类中被调用
+    public static List<String> Online_Players = new ArrayList<>();
     // 设置normal项（用于broadcast）
     public static String normal = BLUE + "[AnswerIt] ";
     @Override
@@ -38,6 +42,10 @@ public final class Main extends JavaPlugin {
         // config
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+
+
+
+
         File file = new File(getDataFolder() + "/lang/", getConfig().getString("lang"));
         saveResource("lang/zh_cn.yml", false);
         saveResource("lang/en_us.yml", false);
@@ -49,6 +57,7 @@ public final class Main extends JavaPlugin {
         // 注册事件
         getServer().getPluginManager().registerEvents(new PlayerChat(), this);
         getServer().getPluginManager().registerEvents(new InvOpen(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinAndQuit(), this);
         getLogger().info(normal + ChatColor.AQUA + "Plugin Enabled");
         /* wait player's commands */
     }

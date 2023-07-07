@@ -1,9 +1,9 @@
 # In this file, player refers to the questioner and target refers to the respondent
 # PS. the color code (such as #AQUA#) can modify the color in org.bukkit.ChatColor
-# Please do not modify the placeholder (such as %s & %d)
+# DO NOT MODIFY THE PLACEHOLDERS (such as %s & %d)
 # DO NOT DELETE ANY SPACES IN QUOTATION MARK
 
-sender_err: "Please let the player to execute the command!"
+sender_err: "Please let players execute this command!"
 mode_err: "#RED#Mode is wrong, please ask %s to check about."
 player_err: "#RED#Cannot find players who named that. Or maybe the player isn't online."
 
@@ -32,8 +32,8 @@ write:
   player_cant_vote: "#RED#You have already voted, please do not vote again!"
   vote_timeout: "#RED#Voting time out."
   # please don't delete space
-  vote_right: "#GREEN#[Correct]  "
-  vote_wrong: "#RED#[Incorrect]"
+  vote_right: "#GREEN#[RIGHT]  "
+  vote_wrong: "#RED#[WRONG]"
   # broadcast_info
   server_vote_right_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for Correct"
   server_vote_wrong_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for Incorrect"
@@ -45,7 +45,7 @@ timer:
   timer_start_info: "#RED#Timing #AQUA#%d #RED#seconds, now start"
   timer_start_tip: "#RED#Please complete the voting within the specified time."
 
-  timer_over_summary: "#GREEN#Vote closed. %d players vote for Correct，%d vote for Incorrect"
-  votes_equal: "#GOLD#Equal votes, no reward or punishment"
+  timer_over_summary: "#GREEN#Vote closed. %d players vote for RIGHT，%d vote for WRONG"
+  votes_equal: "#GOLD#Equal votes, no reward or punishment for them."
   votes_right: "#GREEN#Answer correct!"
   votes_wrong: "#RED#Answer Incorrect!"

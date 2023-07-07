@@ -1,5 +1,6 @@
 package top.mpt.huihui.answerit.commands.impl;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -22,6 +23,10 @@ public class reload extends ICommand {
         File file = new File(main.getDataFolder() + "/lang/", main.getConfig().getString("lang"));
         config = YamlConfiguration.loadConfiguration(file);
         i18N.setYaml(config);
+
+        Online_Players.clear();
+        Bukkit.getOnlinePlayers().forEach( it -> Online_Players.add(it.getName()) );
+
         sender.sendMessage("[AnswerIt] Plugin Reload Completed");
         return true;
     }
