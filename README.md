@@ -29,7 +29,7 @@
 
 1.13 ≤ 建议服务端版本 ≤ 1.19
 
-插件测试环境： `Paper1.16.5 + Minecraft 1.16.5 纯净端`
+插件测试环境： `Spigot1.16.5 + Minecraft 1.16.5(MultiOfflineFix + fabric)`
 
 只要不是在我的插件测试环境上出现的问题，请换成我的测试环境后，用你触发问题的相同步骤走一遍，如果还有问题，请发布Issues
 
@@ -40,7 +40,7 @@ Issues 发布格式:
 - 您是如何触发此问题的（请简述步骤）
 - 您的触发环境（如果和我测试环境一样就不用写）
 - 触发环境格式: 服务端版本 + 客户端版本(所有Mods + ModLoader)
-- eg. `Paper1.16.5 + Minecraft 1.16.5(NO MODS AND MODLOADER)`
+- eg. `Spigot1.16.5 + Minecraft 1.16.5(MultiOfflineFix + fabric)`
 
 # 开发者悉知
 
