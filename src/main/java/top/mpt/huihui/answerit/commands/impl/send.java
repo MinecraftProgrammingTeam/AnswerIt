@@ -22,7 +22,6 @@ public class send extends ICommand {
     public boolean onCommand(CommandSender sender, String[] args){
         // args[0] == 答对啦！
         // args[1] == NameFlying(提问者)
-        System.out.println(prize.canPrize);
         if (sender instanceof Player){
             if (!prize.canPrize){
                 PlayerUtils.send(sender, i18N.getLang("global.player_cant_answer"));

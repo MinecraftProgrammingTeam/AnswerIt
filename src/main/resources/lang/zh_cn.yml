@@ -21,6 +21,7 @@ global:
   command_err_format: "#AQUA#您输入的格式并不正确！"
 
 select:
+  player_send_question: "#AQUA#对方已收到您的问题，请耐心等待对方回答。"
   player_choose_answer: "#AQUA#请选择一个正确答案： "
   # broadcast_info
   target_choose_right_answer: "#GOLD#玩家： #AQUA#%s #GOLD#答对了 #BLUE#%s #GOLD#的问题。"

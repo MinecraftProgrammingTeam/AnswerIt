@@ -22,6 +22,7 @@ global:
   command_err_format: "#AQUA#The format you entered is incorrect!"
 
 select:
+  player_send_question: "#AQUA#The target has received your question, please be patient and wait for his or her answer."
   player_choose_answer: "#AQUA#Please select an answer: "
   # broadcast_info
   target_choose_right_answer: "#GOLD#Player: #AQUA#%s #GOLD#answered #BLUE#%s 's #GOLD#question correctly."

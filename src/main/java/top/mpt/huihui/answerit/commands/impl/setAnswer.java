@@ -39,7 +39,9 @@ public class setAnswer extends ICommand {
             target = Bukkit.getPlayer(args[0]);
             answer = args[1];
             answerText = args[4];
-            // 发送消息
+            // 给发送问题方发送消息
+            PlayerUtils.send(sender, i18N.getLang("select.player_send_question"));
+            // 给接收问题方发送消息
             sendQuestion(((Player) sender).getPlayer(), args[2], args[3]);
         } else {
             sender.sendMessage((String) i18N.getLang("sender_err"));
