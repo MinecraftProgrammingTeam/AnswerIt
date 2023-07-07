@@ -82,7 +82,7 @@ public class setAnswer extends ICommand {
 
             for (int i = 0; i <= answerText.length - 1; i++){
                 TextComponent single = new TextComponent(
-                        ChatUtils.translateColor("#BLUE#[#GREEN#" + answerText[i] + "#BLUE#]#RESET#  ")
+                        ChatUtils.translateColor("#BLUE#[#GREEN#" + answerText[i].replace("-", " ") + "#BLUE#]#RESET#  ")
                 );
                 ClickEvent clickEvent;
                 if (answerText[i].equals(answer)){

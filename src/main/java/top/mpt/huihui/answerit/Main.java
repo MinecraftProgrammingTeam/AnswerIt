@@ -38,10 +38,9 @@ public final class Main extends JavaPlugin {
         // config
         getConfig().options().copyDefaults();
         saveDefaultConfig();
-        File file = new File(getDataFolder() + "\\lang\\", getConfig().getString("lang"));
+        File file = new File(getDataFolder() + "/lang/", getConfig().getString("lang"));
         saveResource("lang/zh_cn.yml", false);
         saveResource("lang/en_us.yml", false);
-
         config = YamlConfiguration.loadConfiguration(file);
         i18N.setYaml(config);
 

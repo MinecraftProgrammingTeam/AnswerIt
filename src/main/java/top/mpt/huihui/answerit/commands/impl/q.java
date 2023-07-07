@@ -53,11 +53,15 @@ public class q extends ICommand {
             // 接收问答的人
             // 给event传参用
             target = Bukkit.getPlayer(args[0]);
+            if (target == null){
+                PlayerUtils.send(sender, i18N.getLang("player_err"));
+                return true;
+            }
 
             if (Objects.equals(args[2], "select") || Objects.equals(args[2], "Select")){
                 // 给玩家发送消息
                 PlayerUtils.send(sender, i18N.getLang("select.player_choose_answer"));
-                // 定义回答文本
+                // 定义回答文本(仅程序，不影响玩家)
                 StringBuilder answerText = new StringBuilder();
                 // 判断回答文本
                 for (int a = 3; a <= args.length - 1; a++){
@@ -70,9 +74,9 @@ public class q extends ICommand {
                 // for循环
                 for (int i = 3; i <= args.length - 1; i++){
                     TextComponent single = new TextComponent(
-                            ChatUtils.translateColor("#BLUE#[#GREEN#" + args[i] + "#BLUE#]#RESET#  ")
+                            ChatUtils.translateColor("#BLUE#[#GREEN#" + args[i].replace("-", " ") + "#BLUE#]#RESET#  ")
                     );
-                    ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer setanswer " + target.getName() + " " + args[i] + " select " + args[1] + " " + answerText);
+                    ClickEvent clickEvent = new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/answer setanswer " + target.getName() + " " + args[i] + " Select " + args[1] + " " + answerText);
                     single.setClickEvent(clickEvent);
                     // 判断TextComponent应该怎么叠
                     if (i == 3){

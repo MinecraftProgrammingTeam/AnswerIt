@@ -10,7 +10,7 @@ public class InvOpen implements Listener {
     /* from prize.prize */
     @EventHandler
     public void onInvClicked(InventoryClickEvent event){
-        if(event.getInventory().equals(prize.getTargetPlayer().getInventory())){
+        if (event.getInventory().equals(prize.getTargetPlayer().getInventory())){
             Player prizePlayer = prize.getPrizePlayer();
             Player targetPlayer = prize.getTargetPlayer();
             // 添加物品

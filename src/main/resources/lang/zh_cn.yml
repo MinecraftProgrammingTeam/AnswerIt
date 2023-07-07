@@ -4,6 +4,7 @@
 
 sender_err: "请让玩家执行指令！"
 mode_err: "#RED#提问类型有误，请让%s检查一下。"
+player_err: "#RED#找不到玩家或玩家不在线"
 
 global:
   receiver_info:
