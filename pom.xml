@@ -6,7 +6,7 @@
 
     <groupId>top.mpt.huihui</groupId>
     <artifactId>answerit</artifactId>
-    <version>1.41-SNAPSHOT</version>
+    <version>1.5-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Answerit</name>

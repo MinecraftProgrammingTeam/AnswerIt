@@ -6,6 +6,7 @@ import org.bukkit.command.TabExecutor;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.commands.impl.*;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
+import top.mpt.huihui.answerit.utils.i18N;
 
 import java.util.*;
 
@@ -52,7 +53,7 @@ public class CommandHandler implements TabExecutor {
      * 使用帮助指令
      */
     public void showHelp(CommandSender sender) {
-        PlayerUtils.send(sender, "#BLUE#AnswerIt 你问我答  #GREEN#插件帮助");
+        PlayerUtils.send(sender, "#BLUE#AnswerIt  #GREEN#Helper");
         for (String key: commands.keySet()) {
             sender.sendMessage(commands.get(key).showUsage());
         }
@@ -88,7 +89,7 @@ public class CommandHandler implements TabExecutor {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            PlayerUtils.send(sender, "#RED#发生了异常：%s", e.getMessage());
+            PlayerUtils.send(sender, "#RED#Got an Exception：%s", e.getMessage());
             return true;
         }
         return true;
@@ -135,7 +136,7 @@ public class CommandHandler implements TabExecutor {
             //玩家可能会输错，找不到指令，那就不管了
             if (cmd != null) {
                 if (Objects.equals(cmd.getCmdName(), "q")){
-                    return Collections.singletonList("请在这里输入问题(带问号)");
+                    return Collections.singletonList(i18N.getLang("tab_tips.input_question").toString());
                 }
             }
         } else if (args.length == 4){
@@ -154,7 +155,7 @@ public class CommandHandler implements TabExecutor {
             if (cmd != null) {
                 if (Objects.equals(cmd.getCmdName(), "q")){
                     if (args[3].equals("Select") || args[3].equals("select")){
-                        return Collections.singletonList("请在这里输入答案(每个空格为1个答案)");
+                        return Collections.singletonList(i18N.getLang("tab_tips.input_answer").toString());
                     }
                 }
             }

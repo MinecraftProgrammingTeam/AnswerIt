@@ -7,6 +7,10 @@ sender_err: "Please let players execute this command!"
 mode_err: "#RED#Mode is wrong, please ask %s to check about."
 player_err: "#RED#Cannot find players who named that. Or maybe the player isn't online."
 
+tab_tips:
+  input_question: "Please enter the question here"
+  input_answer: "Please enter the answer here (one answer per space)"
+
 global:
   receiver_info:
     - "#YELLOW#You received a question from #AQUA#[%s]"
