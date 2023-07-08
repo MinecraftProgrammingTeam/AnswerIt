@@ -39,8 +39,8 @@ write:
   vote_right: "#GREEN#[RIGHT]  "
   vote_wrong: "#RED#[WRONG]"
   # broadcast_info
-  server_vote_right_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for Correct"
-  server_vote_wrong_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for Incorrect"
+  server_vote_right_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for #AQUA#RIGHT"
+  server_vote_wrong_info: "#GREEN#Player: #AQUA#%s #GREEN#vote for #RED#WRONG"
   # target_answer
   target_answer_info: "#GREEN#%s 's answer is #AQUA#%s"
 
@@ -49,7 +49,7 @@ timer:
   timer_start_info: "#RED#Timing #AQUA#%d #RED#seconds, now start"
   timer_start_tip: "#RED#Please complete the voting within the specified time."
 
-  timer_over_summary: "#GREEN#Vote closed. %d players vote for RIGHT，%d vote for WRONG"
+  timer_over_summary: "#GREEN#Vote closed. %d players vote for RIGHT, %d vote for WRONG"
   votes_equal: "#GOLD#Equal votes, no reward or punishment for them."
   votes_right: "#GREEN#Answer correct!"
   votes_wrong: "#RED#Answer Incorrect!"

@@ -7,6 +7,7 @@ import top.mpt.huihui.answerit.utils.ChatUtils;
 import top.mpt.huihui.answerit.utils.i18N;
 
 import static top.mpt.huihui.answerit.Main.*;
+import static top.mpt.huihui.answerit.prize.prize.canPrize;
 
 public class Timer extends BukkitRunnable {
 
@@ -26,6 +27,8 @@ public class Timer extends BukkitRunnable {
         // 清空数组
         voteResult.clear();
         voteList.clear();
+        // 设置可以被奖励
+        canPrize = true;
         ChatUtils.broadcast((String) i18N.getLang("timer.timer_over_summary"), trueCount, falseCount);
         if (trueCount == falseCount){
             ChatUtils.broadcast((String) i18N.getLang("timer.votes_equal"));

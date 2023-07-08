@@ -38,8 +38,8 @@ write:
   vote_right: "#GREEN#[正确]  "
   vote_wrong: "#RED#[错误]"
   # broadcast_info
-  server_vote_right_info: "#GREEN#玩家： #AQUA#%s #GREEN#投给了： 答案正确"
-  server_vote_wrong_info: "#GREEN#玩家： #AQUA#%s #GREEN#投给了： 答案正确"
+  server_vote_right_info: "#GREEN#玩家： #AQUA#%s #GREEN#投给了： #AQUA#答案正确"
+  server_vote_wrong_info: "#GREEN#玩家： #AQUA#%s #GREEN#投给了： #RED#答案错误"
   # target_answer
   target_answer_info: "#GREEN#%s的回答是： #AQUA#%s"
 

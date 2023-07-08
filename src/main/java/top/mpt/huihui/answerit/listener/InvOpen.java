@@ -12,7 +12,6 @@ public class InvOpen implements Listener {
     public void onInvClicked(InventoryClickEvent event){
         // 防止过分占用服务器资源，因为有的时候会疯狂报错
         if (prize.canPrize){
-
             if (event.getInventory().equals(prize.getTargetPlayer().getInventory())){
                 if (!(event.getCurrentItem() == null)){
                     Player prizePlayer = prize.getPrizePlayer();
