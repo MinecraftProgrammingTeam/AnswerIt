@@ -9,8 +9,6 @@ import top.mpt.huihui.answerit.utils.ChatUtils;
 import top.mpt.huihui.answerit.utils.PlayerUtils;
 import top.mpt.huihui.answerit.utils.i18N;
 
-import java.util.Objects;
-
 import static top.mpt.huihui.answerit.Main.*;
 
 public class send extends ICommand {
@@ -22,6 +20,7 @@ public class send extends ICommand {
     public boolean onCommand(CommandSender sender, String[] args){
         // args[0] == 答对啦！
         // args[1] == NameFlying(提问者)
+        // args[2] == token
         if (sender instanceof Player){
             if (!prize.canPrize){
                 PlayerUtils.send(sender, i18N.getLang("global.player_cant_answer"));
@@ -30,14 +29,19 @@ public class send extends ICommand {
             if (args.length != 3){
                 PlayerUtils.send(sender, i18N.getLang("global.command_err_format"));
                 return true;
-            } if (!args[2].equals(setAnswer.token)){ // 检验token
+            }
+            if (!tokens.contains(args[2])){ // 检验token
                 PlayerUtils.send(sender, "#RED#Token error.");
             } else if (args[0].equals("答对啦！")){
+                // 移除使用过的token
+                tokens.remove(args[2]);
                 ChatUtils.broadcast((String) i18N.getLang("select.target_choose_right_answer"), sender.getName(), args[1]);
                 prize.setPrizePlayer((Player) sender);
                 prize.setTargetPlayer(Bukkit.getPlayer(args[1]));
                 prize.executePrize();
             } else if (args[0].equals("答错了！")){
+                // 移除使用过的token
+                tokens.remove(args[2]);
                 ChatUtils.broadcast((String) i18N.getLang("select.target_choose_wrong_answer"), sender.getName(), args[1]);
                 prize.setTargetPlayer((Player) sender);
                 prize.setPrizePlayer(Bukkit.getPlayer(args[1]));

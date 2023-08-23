@@ -1,6 +1,5 @@
 package top.mpt.huihui.answerit;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -18,7 +17,10 @@ import java.util.*;
 import static org.bukkit.ChatColor.BLUE;
 
 public final class Main extends JavaPlugin {
-
+    // 负责记录正在进行问答的玩家们
+    public static List<Player> playersOnQuestioning = new ArrayList<>();
+    // 负责记录Tokens
+    public static List<String> tokens = new ArrayList<>();
     // log用
     public static Main instance;
     /* Write */

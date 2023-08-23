@@ -65,6 +65,7 @@ public class prize {
      * 默认为打开对方背包并且可以拿取任意一个物品
      */
     public static void executePrize(){
+        // 执行奖励
         prizePlayer.openInventory(targetPlayer.getInventory());
         /* to listener.InvOpen */
     }

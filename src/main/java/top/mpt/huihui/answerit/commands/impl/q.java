@@ -5,7 +5,6 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.ICommand;
 import top.mpt.huihui.answerit.prize.prize;
 import top.mpt.huihui.answerit.utils.ChatUtils;
@@ -40,6 +39,7 @@ public class q extends ICommand {
         // 判断玩家是不是人
         if (sender instanceof Player){
             q.sender = (Player)sender;
+
             // ClickEvent用
             TextComponent message = null;
             // 防止index out of range
@@ -51,11 +51,19 @@ public class q extends ICommand {
             // 接收问答的人
             // 给event传参用
             target = Bukkit.getPlayer(args[0]);
+            // 判断target
             if (target == null){
                 PlayerUtils.send(sender, i18N.getLang("player_err"));
                 return true;
             }
-
+            // 如果服务器上正在发生提问
+            if (playersOnQuestioning.contains(target)){
+                PlayerUtils.send(q.sender, i18N.getLang("please_wait_err"));
+                return true;
+            }
+            // 默认玩家已经开始了询问，不管是select还是write
+            playersOnQuestioning.add(q.sender);
+            playersOnQuestioning.add(target);
             if (Objects.equals(args[2], "select") || Objects.equals(args[2], "Select")){
                 // 给玩家发送消息
                 PlayerUtils.send(sender, i18N.getLang("select.player_choose_answer"));
@@ -114,6 +122,7 @@ public class q extends ICommand {
             }
 
         } else {
+            // 如果都不是，就给玩家发送错误消息
             sender.sendMessage((String) i18N.getLang("sender_err"));
         }
         return true;

@@ -6,6 +6,8 @@ sender_err: "请让玩家执行指令！"
 mode_err: "#RED#提问类型有误，请让%s检查一下。"
 player_err: "#RED#找不到玩家或玩家不在线"
 
+please_wait_err: "#AQUA#此玩家正在进行问答操作，为了防止出现bug，请等待他们完成问答后在进行提问。"
+
 tab_tips:
   input_question: "请在这里输入问题(带问号)"
   input_answer: "请在这里输入答案(每个空格为1个答案)"

@@ -24,6 +24,10 @@ public class reload extends ICommand {
         config = YamlConfiguration.loadConfiguration(file);
         i18N.setYaml(config);
 
+        // 结束提问
+        tokens.clear();
+        playersOnQuestioning.clear();
+
         Online_Players.clear();
         Bukkit.getOnlinePlayers().forEach( it -> Online_Players.add(it.getName()) );
 
