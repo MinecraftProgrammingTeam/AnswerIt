@@ -57,7 +57,7 @@ public class q extends ICommand {
                 return true;
             }
             // 如果服务器上正在发生提问
-            if (playersOnQuestioning.contains(target)){
+            if (playersOnQuestioning.contains(target) || playersOnQuestioning.contains(q.sender)){
                 PlayerUtils.send(q.sender, i18N.getLang("please_wait_err"));
                 return true;
             }
