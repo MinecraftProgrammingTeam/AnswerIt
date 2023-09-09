@@ -3,7 +3,7 @@
 
 # Select your language
 
-<h3><a href=".\README.md">简体中文</a> <a href=".\README_EN.md">English</a></h3>
+<h3>简体中文 <a href=".\README_EN.md">English</a></h3>
 
 ![](https://img.shields.io/badge/Spigot%2FPaper-1.13%2B-orange)
 ![](https://img.shields.io/github/license/MinecraftProgrammingTeam/AnswerIt)
@@ -23,11 +23,7 @@
 
 下载最新的 [Release](https://github.com/MinecraftProgrammingTeam/AnswerIt/releases/latest) 放入有BukkitAPI服务端的plugins文件夹之后重启服务器即可
 
-由于1.20的API删除了 `net.md_5.bungee.api.chat.BaseComponent` 包
-
-所以本插件最大支持的版本为1.19
-
-1.13 ≤ 建议服务端版本 ≤ 1.19
+建议服务端版本 ≥ 1.13
 
 插件测试环境： `Spigot1.16.5 + Minecraft 1.16.5(MultiOfflineFix + fabric)`
 
