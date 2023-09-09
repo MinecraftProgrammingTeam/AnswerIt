@@ -2,7 +2,7 @@
 
 # Select your language
 
-<h3><a href=".\README.md">简体中文</a> <a href=".\README_EN.md">English</a></h3>
+<h3><a href=".\README.md">简体中文</a> English</h3>
 
 ![](https://img.shields.io/badge/Spigot%2FPaper-1.13%2B-orange)
 ![](https://img.shields.io/github/license/MinecraftProgrammingTeam/AnswerIt)
@@ -20,11 +20,7 @@ I also added a question and answer for filling in the blank, allowing players fr
 
 Download the latest version in [Release](https://github.com/MinecraftProgrammingTeam/AnswerIt/releases/latest) and put the jar file in a Minecraft server with BukkitAPI in plugins folder, and restart the server to apply it.
 
-Because the package `net.md_5.bungee.api.chat.BaseComponent` is no longer support in the newest(1.20+) API
-
-So the latest version the plugin can support is 1.19:
-
-1.16.5 ≤ Suggested server version ≤ 1.19
+Suggested server version ≥ 1.13
 
 Test Environment("Server + Client"):  `Spigot1.16.5 + Minecraft 1.16.5(MultiOfflineFix + fabric)`
 
