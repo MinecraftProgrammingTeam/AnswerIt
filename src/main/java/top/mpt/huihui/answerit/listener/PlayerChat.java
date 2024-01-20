@@ -9,9 +9,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import top.mpt.huihui.answerit.Main;
 import top.mpt.huihui.answerit.commands.impl.q;
+import top.mpt.huihui.answerit.scheduler.ShowVoteProcess;
 import top.mpt.huihui.answerit.scheduler.Timer;
 import top.mpt.huihui.answerit.utils.ChatUtils;
 import top.mpt.huihui.answerit.utils.ConfigUtils;
+import top.mpt.huihui.answerit.utils.LogUtils;
 import top.mpt.huihui.answerit.utils.i18N;
 
 import static top.mpt.huihui.answerit.Main.*;
@@ -52,7 +54,14 @@ public class PlayerChat implements Listener {
                 int delaySecond = (int) ConfigUtils.getConfig(instance.getConfig(), "Write-wait-time", 30);
                 ChatUtils.broadcast((String) i18N.getLang("timer.timer_start_info"), delaySecond);
                 ChatUtils.broadcast((String) i18N.getLang("timer.timer_start_tip"));
+                // 预知投票结束时间
+                voteEndTime = System.currentTimeMillis() + delaySecond * 1000L;
+                LogUtils.info("Vote end time(Dbg info): " + voteEndTime);
+                // 显示投票进度
+                new ShowVoteProcess().runTaskTimer(Main.getPlugin(Main.class),  0L, 1L);
+                // 处理投票结果
                 new Timer().runTaskLater(Main.getPlugin(Main.class), delaySecond * 20L);
+
                 // 撤销事件
                 isCheckChat = false;
                 /* opened scheduler.Timer  */

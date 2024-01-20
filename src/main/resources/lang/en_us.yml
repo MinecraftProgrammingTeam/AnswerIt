@@ -55,3 +55,8 @@ timer:
   votes_equal: "#GOLD#Equal votes, no reward or punishment for them."
   votes_right: "#GREEN#Answer correct!"
   votes_wrong: "#RED#Answer Incorrect!"
+
+action_bar:
+  # action bar when player voting
+  base: "#GOLD#Voting time：%s seconds #WHITE#| #AQUA#Voting progress： #GREEN#%d Agreed #RED#%d Disagreed"
+  error: "#RED#Unknown error occurred, unable to display ActionBar"

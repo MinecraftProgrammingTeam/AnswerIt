@@ -56,7 +56,7 @@ public class q extends ICommand {
                 PlayerUtils.send(sender, i18N.getLang("player_err"));
                 return true;
             }
-            // 如果服务器上正在发生提问
+            // 如果该玩家正在被提问或正在对别的玩家进行提问
             if (playersOnQuestioning.contains(target) || playersOnQuestioning.contains(q.sender)){
                 PlayerUtils.send(q.sender, i18N.getLang("please_wait_err"));
                 return true;

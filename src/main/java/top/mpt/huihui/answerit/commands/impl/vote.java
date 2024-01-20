@@ -40,10 +40,10 @@ public class vote extends ICommand {
             }
             if (args[0].equals("true")){
                 ChatUtils.broadcast((String) i18N.getLang("write.server_vote_right_info"), sender.getName());
-                voteResult.add(true);
+                voteRight += 1;
             } else if (args[0].equals("false")){
                 ChatUtils.broadcast((String) i18N.getLang("write.server_vote_wrong_info"), sender.getName());
-                voteResult.add(false);
+                voteWrong += 1;
             }
             // 投票列表添加玩家
             voteList.add(sender.getName());

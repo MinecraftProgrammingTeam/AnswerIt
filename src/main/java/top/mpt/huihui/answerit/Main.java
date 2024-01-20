@@ -26,8 +26,10 @@ public final class Main extends JavaPlugin {
     /* Write */
     // 是否检查玩家聊天
     public static boolean isCheckChat = false;
-    // 存票
-    public static List<Boolean> voteResult = new ArrayList<>();
+    // 存票(正确的票数和错误的票数)
+    public static int voteRight = 0;
+    public static int voteWrong = 0;
+
     // 存玩家（防止重复投票）
     public static List<String> voteList = new ArrayList<>();
     // 避免玩家投票结束后进行投票
@@ -38,6 +40,8 @@ public final class Main extends JavaPlugin {
     public static List<String> Online_Players = new ArrayList<>();
     // 设置normal项（用于broadcast）
     public static String normal = BLUE + "[AnswerIt] ";
+    // 投票结束时间（用于给玩家显示ActionBar）
+    public static long voteEndTime = 0;
     @Override
     public void onEnable() {
         instance = this;

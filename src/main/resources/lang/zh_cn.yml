@@ -54,3 +54,8 @@ timer:
   votes_equal: "#GOLD#票数相等，没有奖励也没有惩罚(悲"
   votes_right: "#GREEN#答案正确！"
   votes_wrong: "#RED#答案错误！"
+
+action_bar:
+  # action bar when player voting
+  base: "#GOLD#投票剩余时间：%s 秒 #WHITE#| #AQUA#投票进度： #GREEN#%d 个同意 #RED#%d 个不同意"
+  error: "#RED#发生未知错误，无法显示ActionBar"

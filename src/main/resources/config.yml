@@ -1,7 +1,7 @@
 # Language
 
-# need "/reload" to enable
-# 需要输入指令"/reload"来应用语言
+# need "/answer reload" to enable
+# 需要输入指令"/answer reload"来应用语言
 
 # please write the file name with suffix
 # 请带上文件后缀
@@ -11,7 +11,7 @@ lang: "zh_cn.yml"
 # Write Mode, Time for voting(seconds)
 # Write模式下，投票的等待时间(秒)
 
-# need "/reload" to enable
-# 需要输入指令"/reload"应用
+# need "/answer reload" to enable
+# 需要输入指令"/answer reload"应用
 Write-wait-time: 30
 
