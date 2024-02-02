@@ -5,6 +5,7 @@
 sender_err: "请让玩家执行指令！"
 mode_err: "#RED#提问类型有误，请让%s检查一下。"
 player_err: "#RED#找不到玩家或玩家不在线"
+self_err: "#RED#你何必自己提问自己呢？"
 
 please_wait_err: "#AQUA#此玩家正在进行问答操作，为了防止出现bug，请等待他们完成问答后在进行提问。"
 
@@ -25,6 +26,7 @@ global:
 
   player_cant_answer: "#RED#想啥呢？答完题了还想再答是吧？？？给爷爬！！！"
   command_err_format: "#AQUA#您输入的格式并不正确！"
+  inv_closed: "#AQUA#本次问答操作已结束。"
 
 select:
   player_send_question: "#AQUA#对方已收到您的问题，请耐心等待对方回答。"

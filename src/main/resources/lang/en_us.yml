@@ -6,6 +6,7 @@
 sender_err: "Please let players execute this command!"
 mode_err: "#RED#Mode is wrong, please ask %s to check about."
 player_err: "#RED#Cannot find players who named that. Or maybe the player isn't online."
+self_err: "#RED#Why would you asked yourself a question and answered it?"
 
 please_wait_err: "#AQUA#Someone is already in Q&A. To prevent any bugs, please wait for them to complete the Q&A before asking any questions to someone."
 
@@ -26,6 +27,7 @@ global:
 
   player_cant_answer: "#RED#You cannot answer it again!!!"
   command_err_format: "#AQUA#The format you entered is incorrect!"
+  inv_closed: "#AQUA#This Q&A operation has ended."
 
 select:
   player_send_question: "#AQUA#The target has received your question, please be patient and wait for his or her answer."

@@ -1,11 +1,13 @@
 package top.mpt.huihui.answerit;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import top.mpt.huihui.answerit.executor.CommandHandler;
+import top.mpt.huihui.answerit.listener.InvClose;
 import top.mpt.huihui.answerit.listener.InvOpen;
 import top.mpt.huihui.answerit.listener.PlayerChat;
 import top.mpt.huihui.answerit.listener.PlayerJoinAndQuit;
@@ -49,8 +51,7 @@ public final class Main extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
-
-
+        Bukkit.getOnlinePlayers().forEach(it -> Online_Players.add(it.getName()) );
 
         File file = new File(getDataFolder() + "/lang/", getConfig().getString("lang"));
         saveResource("lang/zh_cn.yml", false);
@@ -63,6 +64,7 @@ public final class Main extends JavaPlugin {
         // 注册事件
         getServer().getPluginManager().registerEvents(new PlayerChat(), this);
         getServer().getPluginManager().registerEvents(new InvOpen(), this);
+        getServer().getPluginManager().registerEvents(new InvClose(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinAndQuit(), this);
         getLogger().info(normal + ChatColor.AQUA + "Plugin Enabled");
         /* wait player's commands */

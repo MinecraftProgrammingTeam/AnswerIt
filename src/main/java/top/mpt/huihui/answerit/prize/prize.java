@@ -1,6 +1,11 @@
 package top.mpt.huihui.answerit.prize;
 
 import org.bukkit.entity.Player;
+import top.mpt.huihui.answerit.utils.ChatUtils;
+import top.mpt.huihui.answerit.utils.PlayerUtils;
+import top.mpt.huihui.answerit.utils.i18N;
+
+import static top.mpt.huihui.answerit.Main.playersOnQuestioning;
 
 /**
  * 奖罚系统
@@ -65,8 +70,20 @@ public class prize {
      * 默认为打开对方背包并且可以拿取任意一个物品
      */
     public static void executePrize(){
-        // 执行奖励
-        prizePlayer.openInventory(targetPlayer.getInventory());
-        /* to listener.InvOpen */
+        if (prizePlayer.getName().equals(targetPlayer.getName())){
+            PlayerUtils.send(prizePlayer, i18N.getLang("self_err"));
+            PlayerUtils.send(prizePlayer, i18N.getLang("global.inv_closed"));
+            // 结束奖励 //
+            // 移除两次是因为这不是集合是数组 //
+            playersOnQuestioning.remove(prizePlayer);
+            playersOnQuestioning.remove(targetPlayer);
+            clearAllPlayer();
+        }
+        else {
+            // 执行奖励
+            prizePlayer.openInventory(targetPlayer.getInventory());
+            /* to listener.InvOpen */
+        }
+
     }
 }
