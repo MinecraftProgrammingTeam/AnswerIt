@@ -27,6 +27,7 @@ global:
   player_cant_answer: "#RED#想啥呢？答完题了还想再答是吧？？？给爷爬！！！"
   command_err_format: "#AQUA#您输入的格式并不正确！"
   inv_closed: "#AQUA#本次问答操作已结束。"
+  player_quit: "#RED#玩家: #AQUA#%s#RED#在问答过程中陶艺了，本次问答操作已结束。"
 
 select:
   player_send_question: "#AQUA#对方已收到您的问题，请耐心等待对方回答。"

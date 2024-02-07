@@ -79,6 +79,11 @@ public class prize {
             playersOnQuestioning.remove(targetPlayer);
             clearAllPlayer();
         }
+//        // 判断玩家是否被减少了生命值，如果被减少过，就设置玩家生命值为正常值
+//        else if (prizePlayer.isHealthScaled()){
+//            prizePlayer.setHealthScale(20);
+//            prizePlayer.setHealthScaled(false);
+//        }
         else {
             // 执行奖励
             prizePlayer.openInventory(targetPlayer.getInventory());
